@@ -1,4 +1,5 @@
 import { client } from "../../libs/microCmsClient";
+import {getBlogDetail} from 'libs/apiClient'
 
 export default function BlogId({ blog }) {
   return (
@@ -25,7 +26,7 @@ export const getStaticPaths = async () => {
 // データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (context) => {
   const id = context.params.id;
-  const data = await client.get({ endpoint: "blog", contentId: id });
+  const data = await getBlogDetail(id);
 
   return {
     props: {
