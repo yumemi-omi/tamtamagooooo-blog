@@ -3,5 +3,5 @@ export default function Custom404() {
     <main className="main">
       <p>ページがありません。</p>
     </main>
-  );
+  )
 }
