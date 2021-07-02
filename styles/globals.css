@@ -1,3 +1,16 @@
+:root {
+  --color-base: #FAFCFE;
+  --color-main: #EA4E1F;
+  --color-sub: #F69F65;
+  --color-main-accent: #618532;
+  --color-sub-accent: #421810;
+
+  --color-peach: #F2C094;
+  --color-lavendar: #E2DEF7;
+  --color-geranium: #DE3131;
+  --color-forest-green: #75A176;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
