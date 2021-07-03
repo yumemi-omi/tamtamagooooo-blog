@@ -1,16 +1,25 @@
 import Link from 'next/link'
 import { GetStaticProps } from 'next'
-// import { client } from "../libs/microCmsClient";
 import { getBlog } from 'libs/apiClient'
+import { Blog } from 'types/microCMS/api/Blog'
+import Card from 'components/shared/card'
+import { ReactNode, VFC } from 'react'
 
-export default function Home({ blog }) {
+type HomeProps = {
+  blogs: Blog[]
+  children: ReactNode
+}
+
+const Home: VFC<HomeProps> = ({ blogs }) => {
   return (
     <div>
       <ul>
-        {blog.map((blog) => (
+        {blogs.map((blog) => (
           <li key={blog.id}>
             <Link href={`/blog/${blog.id}`}>
-              <a>{blog.title}</a>
+              <a>
+                <Card blog={blog} />
+              </a>
             </Link>
           </li>
         ))}
@@ -25,7 +34,9 @@ export const getStaticProps: GetStaticProps = async () => {
 
   return {
     props: {
-      blog: data.contents,
+      blogs: data.contents,
     },
   }
 }
+
+export default Home

@@ -14,3 +14,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .fallback-bg {
+    background: linear-gradient(to bottom right, var(--color-main) 0%, var(--color-sub) 100%);
+  }
+}

@@ -1,7 +1,8 @@
-import { TextField, RichEdit } from 'types/microCMS/Schema'
+import { TextField, RichEdit, Image } from 'types/microCMS/Schema'
 import { MicroCMSCommonValue } from 'types/microCMS/Common'
 
 export type Blog = {
   title: TextField
   body: RichEdit
+  thumbnail?: Image
 } & MicroCMSCommonValue

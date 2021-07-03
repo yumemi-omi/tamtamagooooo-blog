@@ -6,7 +6,7 @@ import { MicroCMSGetQuery } from 'types/microCMS/Query'
 export type Methods = {
   get: {
     resBody: {
-      contents: Blog
+      contents: Blog[]
     } & MicroCMSCaptionValue
     query?: MicroCMSGetQuery
     reqHeaders: MicroCMSReqHeaders
