@@ -3,6 +3,7 @@ import { GetStaticProps } from 'next'
 import { getBlog } from 'libs/apiClient'
 import { Blog } from 'types/microCMS/api/Blog'
 import Card from 'components/shared/card'
+import Layout from 'components/shared/layout'
 import { ReactNode, VFC } from 'react'
 
 type HomeProps = {
@@ -12,8 +13,8 @@ type HomeProps = {
 
 const Home: VFC<HomeProps> = ({ blogs }) => {
   return (
-    <div>
-      <ul>
+    <Layout>
+      <ul className="flex justify-around gap-5">
         {blogs.map((blog) => (
           <li key={blog.id}>
             <Link href={`/blog/${blog.id}`}>
@@ -24,7 +25,7 @@ const Home: VFC<HomeProps> = ({ blogs }) => {
           </li>
         ))}
       </ul>
-    </div>
+    </Layout>
   )
 }
 
