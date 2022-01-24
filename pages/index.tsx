@@ -14,7 +14,7 @@ type HomeProps = {
 const Home: VFC<HomeProps> = ({ blogs }) => {
   return (
     <Layout>
-      <ul className="flex justify-around gap-5">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 xl:gap-8">
         {blogs.map((blog) => (
           <li key={blog.id}>
             <Link href={`/blog/${blog.id}`}>
