@@ -3,11 +3,11 @@ import { Blog } from 'types/microCMS/api/Blog'
 import Image from 'next/image'
 import { format } from 'date-fns'
 
-type CardProps = {
+type BlogCardProps = {
   blog: Blog
 }
 
-const Card = forwardRef<HTMLDivElement, CardProps>(function Card(props, ref) {
+export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function Card(props, ref) {
   const { blog } = props
   const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
   return (
@@ -33,5 +33,3 @@ const Card = forwardRef<HTMLDivElement, CardProps>(function Card(props, ref) {
     </div>
   )
 })
-
-export default Card

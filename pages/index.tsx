@@ -2,8 +2,8 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { getBlog } from 'libs/apiClient'
 import { Blog } from 'types/microCMS/api/Blog'
-import Card from 'components/shared/card'
-import Layout from 'components/shared/layout'
+import { BlogCard } from 'components/shared/BlogCard'
+import { Layout } from 'components/shared/Layout'
 import { ReactNode, VFC } from 'react'
 
 type HomeProps = {
@@ -19,7 +19,7 @@ const Home: VFC<HomeProps> = ({ blogs }) => {
           <li key={blog.id}>
             <Link href={`/blog/${blog.id}`}>
               <a>
-                <Card blog={blog} />
+                <BlogCard blog={blog} />
               </a>
             </Link>
           </li>
