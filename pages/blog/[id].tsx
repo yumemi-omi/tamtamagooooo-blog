@@ -1,9 +1,17 @@
-import { client } from '../../libs/microCmsClient'
+import { client } from 'libs/microCmsClient'
 import { getBlogDetail } from 'libs/apiClient'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
+import { Blog } from 'types/microCMS/api/Blog'
+import { GetStaticPropsContext } from 'next'
+import { VFC } from 'react'
 
-export default function BlogId({ blog, highlightedBody }) {
+type Props = {
+  blog: Blog
+  highlightedBody: string
+}
+
+const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
   return (
     <main>
       <h1>{blog.title}</h1>
@@ -18,7 +26,10 @@ export default function BlogId({ blog, highlightedBody }) {
 }
 
 // 静的生成のためのパスを指定します
-export const getStaticPaths = async () => {
+export const getStaticPaths = async (): Promise<{
+  paths: any
+  fallback: boolean
+}> => {
   const data: any = await client.get({ endpoint: 'blog' })
 
   const paths = data.contents.map((content) => `/blog/${content.id}`)
@@ -26,8 +37,12 @@ export const getStaticPaths = async () => {
 }
 
 // データをテンプレートに受け渡す部分の処理を記述します
-export const getStaticProps = async (context) => {
-  const id = context.params.id
+export const getStaticProps = async (
+  context: GetStaticPropsContext,
+): Promise<{
+  props: Props
+}> => {
+  const id = context.params.id as string
   const data = await getBlogDetail(id)
 
   const $ = cheerio.load(data.body)
@@ -55,3 +70,5 @@ export const getStaticProps = async (context) => {
     },
   }
 }
+
+export default BlogId
