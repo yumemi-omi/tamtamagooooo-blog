@@ -2,8 +2,7 @@ import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { getBlog } from 'libs/apiClient'
 import { Blog } from 'types/microCMS/api/Blog'
-import { BlogCard } from 'components/shared/BlogCard'
-import { Layout } from 'components/shared/Layout'
+import { BlogCard } from 'components/screen/blog/BlogCard'
 import { ReactNode, VFC } from 'react'
 
 type HomeProps = {
@@ -13,19 +12,17 @@ type HomeProps = {
 
 const Home: VFC<HomeProps> = ({ blogs }) => {
   return (
-    <Layout>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 xl:gap-8">
-        {blogs.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>
-              <a>
-                <BlogCard blog={blog} />
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </Layout>
+    <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-6 xl:gap-8">
+      {blogs.map((blog) => (
+        <li key={blog.id}>
+          <Link href={`/blog/${blog.id}`}>
+            <a>
+              <BlogCard blog={blog} />
+            </a>
+          </Link>
+        </li>
+      ))}
+    </ul>
   )
 }
 
