@@ -1,6 +1,12 @@
 import { VFC } from 'react'
+import Link from 'next/link'
 
-export const MainHeader: VFC = (props) => {
-  console.log({ props })
-  return <header>ヘッダー ヘッダー</header>
+export const MainHeader: VFC = () => {
+  return (
+    <header>
+      <Link href={`/`}>
+        <a>たまごのブログ</a>
+      </Link>
+    </header>
+  )
 }
