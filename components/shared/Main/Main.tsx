@@ -5,5 +5,5 @@ type MainProps = {
 }
 
 export const Main: VFC<MainProps> = ({ children }) => {
-  return <div className="p-10">{children}</div>
+  return <main className="p-10">{children}</main>
 }

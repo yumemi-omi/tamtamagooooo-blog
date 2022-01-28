@@ -5,6 +5,7 @@ import hljs from 'highlight.js'
 import { Blog } from 'types/microCMS/api/Blog'
 import { GetStaticPropsContext } from 'next'
 import { VFC } from 'react'
+import { Content } from 'components/screen/blog/Content'
 
 type Props = {
   blog: Blog
@@ -13,15 +14,11 @@ type Props = {
 
 const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
   return (
-    <main>
+    <>
       <h1>{blog.title}</h1>
       <p>{blog.publishedAt}</p>
-      <div
-        dangerouslySetInnerHTML={{
-          __html: highlightedBody,
-        }}
-      />
-    </main>
+      <Content html={highlightedBody} />
+    </>
   )
 }
 
