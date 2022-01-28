@@ -3,9 +3,9 @@ import Link from 'next/link'
 
 export const MainHeader: VFC = () => {
   return (
-    <header>
+    <header className="bg-magnolia border-main border-b sticky px-10 py-6 top-0 z-10 flex place-items-center">
       <Link href={`/`}>
-        <a>たまごのブログ</a>
+        <a className="text-main text-xl font-bold">たまごのブログ</a>
       </Link>
     </header>
   )

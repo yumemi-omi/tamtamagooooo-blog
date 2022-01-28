@@ -5,13 +5,16 @@ import { AppProps } from 'next/app'
 import { ReactElement } from 'react'
 
 import { Layout } from 'components/shared/Layout'
+import { Main } from 'components/shared/Main'
 import { MainHeader } from 'components/shared/MainHeader'
 
 export default function MyApp({ Component, pageProps }: AppProps): ReactElement {
   return (
     <Layout>
       <MainHeader />
-      <Component {...pageProps} />
+      <Main>
+        <Component {...pageProps} />
+      </Main>
     </Layout>
   )
 }

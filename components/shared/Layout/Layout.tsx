@@ -5,5 +5,5 @@ type LayoutProps = {
 }
 
 export const Layout: VFC<LayoutProps> = ({ children }) => {
-  return <div className="p-10">{children}</div>
+  return <div>{children}</div>
 }
