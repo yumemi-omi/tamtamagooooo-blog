@@ -1,6 +1,6 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 
-export const useTheme = ( ) => {
+export const useTheme = () => {
   const [darkMode, setDarkMode] = useState(false)
   useEffect(() => {
     if (
@@ -28,6 +28,6 @@ export const useTheme = ( ) => {
   return {
     darkMode,
     setDarkMode,
-    handleChangeDarkMode
+    handleChangeDarkMode,
   }
 }
