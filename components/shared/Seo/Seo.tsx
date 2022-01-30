@@ -24,7 +24,7 @@ export const Seo: VFC<SeoProps> = (props) => {
   // Set APP_ROOT_URL on enviroment variables
   // e.g. APP_ROOT_URL=https://example.com
   // https://nextjs.org/docs/basic-features/environment-variables
-  const APP_ROOT_URL = process.env.NEXT_PUBLIC_APP_ROOT_URL
+  const APP_ROOT_URL = process.env.APP_ROOT_URL
 
   // Absolute page url
   const pageUrl = APP_ROOT_URL + path
