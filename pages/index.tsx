@@ -12,7 +12,6 @@ type HomeProps = {
 }
 
 const Home: VFC<HomeProps> = ({ blogs }) => {
-  console.log({ blogs })
   return (
     <Seo path="/" title="投稿一覧" description="ぼちぼち投稿しております。たまごです。">
       {blogs.length !== 0 ? (

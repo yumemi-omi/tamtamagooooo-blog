@@ -17,7 +17,6 @@ type Props = {
 
 const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
   const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
-  console.log({ blog })
   return (
     <>
       <Seo
