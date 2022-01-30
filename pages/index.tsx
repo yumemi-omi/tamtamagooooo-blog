@@ -13,7 +13,8 @@ type HomeProps = {
 
 const Home: VFC<HomeProps> = ({ blogs }) => {
   return (
-    <Seo path="/" title="投稿一覧" description="ぼちぼち投稿しております。たまごです。">
+    <>
+      <Seo path="/" title="投稿一覧" description="ぼちぼち投稿しております。たまごです。" />
       {blogs.length !== 0 ? (
         <ul className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-8">
           {/* TODO: リストコンポーネント化 */}
@@ -33,7 +34,7 @@ const Home: VFC<HomeProps> = ({ blogs }) => {
           投稿は、まだありません。楽しみにしててね！
         </div>
       )}
-    </Seo>
+    </>
   )
 }
 
