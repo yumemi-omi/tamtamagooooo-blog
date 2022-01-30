@@ -15,7 +15,7 @@ const Home: VFC<HomeProps> = ({ blogs }) => {
   console.log({ blogs })
   return blogs.length !== 0 ? (
     <>
-      <Seo />
+      <Seo path="/" />
       {/* TODO: リストコンポーネント化 */}
       <ul className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-8">
         {blogs.map((blog) => (

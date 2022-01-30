@@ -20,7 +20,7 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
   console.log({ blog })
   return (
     <>
-      <Seo />
+      <Seo path={`/blog/${blog.id}`} />
       <NarrowView className="flex flex-col items-center justify-center">
         {/* TODO: ブログタイトルコンポーネント化 */}
         <div className="my-10 text-sub-accent">
