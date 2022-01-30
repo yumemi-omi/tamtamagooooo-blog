@@ -8,6 +8,7 @@ import { VFC } from 'react'
 import { Content } from 'components/screen/blog/Content'
 import { format } from 'date-fns'
 import { NarrowView } from 'components/shared/NarrowView'
+import { Seo } from 'components/shared/Seo'
 
 type Props = {
   blog: Blog
@@ -16,15 +17,19 @@ type Props = {
 
 const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
   const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
-
+  console.log({ blog })
   return (
-    <NarrowView className="flex flex-col items-center justify-center">
-      <div className="my-10 text-sub-accent">
-        <h1 className="mb-2 text-4xl font-bold">{blog.title}</h1>
-        <span className="">{publishedAt}</span>
-      </div>
-      <Content html={highlightedBody} />
-    </NarrowView>
+    <>
+      <Seo />
+      <NarrowView className="flex flex-col items-center justify-center">
+        {/* TODO: ブログタイトルコンポーネント化 */}
+        <div className="my-10 text-sub-accent">
+          <h1 className="mb-2 text-4xl font-bold">{blog.title}</h1>
+          <span className="">{publishedAt}</span>
+        </div>
+        <Content html={highlightedBody} />
+      </NarrowView>
+    </>
   )
 }
 
