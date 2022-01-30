@@ -6,6 +6,8 @@ import { Blog } from 'types/microCMS/api/Blog'
 import { GetStaticPropsContext } from 'next'
 import { VFC } from 'react'
 import { Content } from 'components/screen/blog/Content'
+import { format } from 'date-fns'
+import { NarrowView } from 'components/shared/NarrowView'
 
 type Props = {
   blog: Blog
@@ -13,12 +15,16 @@ type Props = {
 }
 
 const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
+  const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
+
   return (
-    <>
-      <h1>{blog.title}</h1>
-      <p>{blog.publishedAt}</p>
+    <NarrowView className="flex flex-col items-center justify-center">
+      <div className="my-10 text-sub-accent">
+        <h1 className="mb-2 text-4xl font-bold">{blog.title}</h1>
+        <span className="">{publishedAt}</span>
+      </div>
       <Content html={highlightedBody} />
-    </>
+    </NarrowView>
   )
 }
 
