@@ -11,7 +11,7 @@ type HomeProps = {
 }
 
 const Home: VFC<HomeProps> = ({ blogs }) => {
-  return (
+  return blogs.length !== 0 ? (
     <ul className="grid grid-cols-1 gap-x-4 gap-y-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-8">
       {blogs.map((blog) => (
         <li key={blog.id}>
@@ -23,6 +23,8 @@ const Home: VFC<HomeProps> = ({ blogs }) => {
         </li>
       ))}
     </ul>
+  ) : (
+    <div>投稿は、まだありません。楽しみにしててね！</div>
   )
 }
 
