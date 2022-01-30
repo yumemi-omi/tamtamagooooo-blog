@@ -20,7 +20,12 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
   console.log({ blog })
   return (
     <>
-      <Seo path={`/blog/${blog.id}`} />
+      <Seo
+        path={`/blog/${blog.id}`}
+        ogImagePath={blog.thumbnail ? blog.thumbnail.url : ''}
+        title={blog.title}
+        description={blog.summary}
+      />
       <NarrowView className="flex flex-col items-center justify-center">
         {/* TODO: ブログタイトルコンポーネント化 */}
         <div className="my-10 text-sub-accent">

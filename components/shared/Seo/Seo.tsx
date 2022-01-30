@@ -21,19 +21,14 @@ export const Seo: VFC<SeoProps> = (props) => {
     noTitleTemplate,
   } = props
 
-  // Set APP_ROOT_URL on enviroment variables
-  // e.g. APP_ROOT_URL=https://example.com
-  // https://nextjs.org/docs/basic-features/environment-variables
   const APP_ROOT_URL = process.env.APP_ROOT_URL
-
-  // Absolute page url
   const pageUrl = APP_ROOT_URL + path
-  // Absolute og image url
-  const ogImageUrl = APP_ROOT_URL + ogImagePath
+
+  const ogImageUrl = ogImagePath
 
   return (
     <NextHeadSeo
-      title={noTitleTemplate ? title : `${title} - MyAppName`}
+      title={noTitleTemplate ? title : `${title} - たまごのブログ`}
       canonical={pageUrl}
       description={description}
       robots={noindex ? 'noindex, nofollow' : undefined}
@@ -43,7 +38,7 @@ export const Seo: VFC<SeoProps> = (props) => {
         url: pageUrl,
         image: ogImageUrl,
         type: 'article',
-        siteName: 'MyAppName',
+        siteName: 'たまごのブログ',
       }}
       twitter={{
         card: 'summary_large_image',
