@@ -31,7 +31,7 @@ const Home: VFC<HomeProps> = ({ blogs }) => {
     </>
   ) : (
     <>
-      <Seo />
+      <Seo path="/" />
       {/* TODO: メッセージコンポーネント化 */}
       <div>投稿は、まだありません。楽しみにしててね！</div>
     </>
