@@ -12,10 +12,12 @@ type Props = {
 
 const Policy: VFC<Props> = ({ policy }) => {
   return (
-    <NarrowView>
+    <>
       <Seo path="/policy" title="プライバシーポリシー" />
-      <Content html={policy.content} />
-    </NarrowView>
+      <NarrowView>
+        <Content html={policy.content} />
+      </NarrowView>
+    </>
   )
 }
 
