@@ -4,6 +4,7 @@ import { Seo } from 'components/shared/Seo'
 import { NarrowView } from 'components/shared/NarrowView'
 import { getPostByFilename } from 'libs/markdownApi'
 import markdownToHtml from 'libs/markdownToHtml'
+import { Content } from 'components/screen/blog/Content'
 
 type Props = {
   policy: { [key: string]: string }
@@ -14,12 +15,7 @@ const Policy: VFC<Props> = ({ policy }) => {
   return (
     <NarrowView>
       <Seo path="/policy" title="プライバシーポリシー" />
-      <div
-        className="w-full"
-        dangerouslySetInnerHTML={{
-          __html: policy.content,
-        }}
-      />
+      <Content html={policy.content} />
     </NarrowView>
   )
 }
