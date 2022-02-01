@@ -28,7 +28,7 @@ export const Seo: VFC<SeoProps> = (props) => {
 
   return (
     <NextHeadSeo
-      title={noTitleTemplate ? title : `${title} - たまごのブログ`}
+      title={noTitleTemplate ? title : `${title} - とりたま日記`}
       canonical={pageUrl}
       description={description}
       robots={noindex ? 'noindex, nofollow' : undefined}
@@ -38,7 +38,7 @@ export const Seo: VFC<SeoProps> = (props) => {
         url: pageUrl,
         image: ogImageUrl,
         type: 'article',
-        siteName: 'たまごのブログ',
+        siteName: 'とりたま日記',
       }}
       twitter={{
         card: 'summary_large_image',
