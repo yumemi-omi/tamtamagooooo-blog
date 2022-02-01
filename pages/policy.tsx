@@ -1,7 +1,7 @@
-import Link from 'next/link'
 import { GetStaticProps } from 'next'
 import { VFC } from 'react'
 import { Seo } from 'components/shared/Seo'
+import { NarrowView } from 'components/shared/NarrowView'
 import { getPostByFilename } from 'libs/markdownApi'
 import markdownToHtml from 'libs/markdownToHtml'
 
@@ -12,7 +12,7 @@ type Props = {
 const Policy: VFC<Props> = ({ policy }) => {
   console.log({ policy })
   return (
-    <>
+    <NarrowView>
       <Seo path="/policy" title="プライバシーポリシー" />
       <div
         className="w-full"
@@ -20,7 +20,7 @@ const Policy: VFC<Props> = ({ policy }) => {
           __html: policy.content,
         }}
       />
-    </>
+    </NarrowView>
   )
 }
 
