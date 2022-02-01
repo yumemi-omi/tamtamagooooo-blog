@@ -7,6 +7,7 @@ import { ReactElement } from 'react'
 import { Layout } from 'components/shared/Layout'
 import { Main } from 'components/shared/Main'
 import { MainHeader } from 'components/shared/MainHeader'
+import { MainFooter } from 'components/shared/MainFooter'
 
 export default function MyApp({ Component, pageProps }: AppProps): ReactElement {
   return (
@@ -15,6 +16,7 @@ export default function MyApp({ Component, pageProps }: AppProps): ReactElement 
       <Main>
         <Component {...pageProps} />
       </Main>
+      <MainFooter />
     </Layout>
   )
 }
