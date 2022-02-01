@@ -11,7 +11,6 @@ type Props = {
 }
 
 const Policy: VFC<Props> = ({ policy }) => {
-  console.log({ policy })
   return (
     <NarrowView>
       <Seo path="/policy" title="プライバシーポリシー" />
