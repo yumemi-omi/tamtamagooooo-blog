@@ -2,7 +2,7 @@ import { VFC, ReactNode } from 'react'
 
 type NarrowViewProps = {
   children: ReactNode
-  className: string
+  className?: string
 }
 
 export const NarrowView: VFC<NarrowViewProps> = ({ children, className }) => {
