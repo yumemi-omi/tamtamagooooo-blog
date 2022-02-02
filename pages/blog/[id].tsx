@@ -9,6 +9,7 @@ import { Content } from 'components/screen/blog/Content'
 import { format } from 'date-fns'
 import { NarrowView } from 'components/shared/NarrowView'
 import { Seo } from 'components/shared/Seo'
+import Image from 'next/image'
 
 type Props = {
   blog: Blog
@@ -17,6 +18,7 @@ type Props = {
 
 const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
   const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
+
   return (
     <>
       <Seo
@@ -27,7 +29,21 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
       />
       <NarrowView className="flex flex-col items-center justify-center">
         {/* TODO: ブログタイトルコンポーネント化 */}
-        <div className="my-10 text-sub-accent">
+        <div className="flex flex-col items-center gap-2 my-10 text-sub-accent">
+          {blog.thumbnail && (
+            <div style={{ width: '600px' }}>
+              <Image
+                className="h-full rounded-t-lg aspect-h-9 aspect-w-16"
+                src={blog.thumbnail.url}
+                alt={`${blog.title}のサムネイル`}
+                width={600}
+                height={371}
+                layout="responsive"
+                objectFit="cover"
+                objectPosition="center"
+              />
+            </div>
+          )}
           <h1 className="mb-2 text-4xl font-bold">{blog.title}</h1>
           <span className="">{publishedAt}</span>
         </div>
