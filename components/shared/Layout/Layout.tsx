@@ -5,5 +5,5 @@ type LayoutProps = {
 }
 
 export const Layout: VFC<LayoutProps> = ({ children }) => {
-  return <div>{children}</div>
+  return <div className="flex flex-col h-screen">{children}</div>
 }
