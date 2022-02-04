@@ -29,7 +29,7 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
       />
       <NarrowView className="flex flex-col items-center justify-center">
         {/* TODO: ブログタイトルコンポーネント化 */}
-        <div className="flex flex-col items-center w-9/12 gap-2 my-10 text-sub-accent">
+        <div className="flex flex-col items-center w-screen gap-2 my-10 md:w-9/12 text-sub-accent">
           {blog.thumbnail && (
             <div className="w-full">
               <Image
