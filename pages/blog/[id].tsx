@@ -29,11 +29,11 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
       />
       <NarrowView className="flex flex-col items-center justify-center">
         {/* TODO: ブログタイトルコンポーネント化 */}
-        <div className="flex flex-col items-center gap-2 my-10 text-sub-accent">
+        <div className="flex flex-col items-center w-9/12 gap-2 my-10 text-sub-accent">
           {blog.thumbnail && (
-            <div style={{ width: '600px' }}>
+            <div className="w-full">
               <Image
-                className="h-full rounded-t-lg aspect-h-9 aspect-w-16"
+                className="h-full rounded-lg aspect-h-9 aspect-w-16"
                 src={blog.thumbnail.url}
                 alt={`${blog.title}のサムネイル`}
                 width={600}
@@ -44,8 +44,13 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
               />
             </div>
           )}
-          <h1 className="mb-2 text-4xl font-bold">{blog.title}</h1>
-          <span className="">{publishedAt}</span>
+          <div className="flex flex-col items-start justify-between w-full gap-2 p-4">
+            <h1 className="text-4xl font-bold ">{blog.title}</h1>
+            <span className="flex-shrink px-2 py-1 border border-solid rounded border-sub-accent">
+              {blog.category.name}
+            </span>
+            <span className="">{publishedAt}</span>
+          </div>
         </div>
         <Content html={highlightedBody} />
       </NarrowView>
