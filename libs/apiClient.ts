@@ -17,3 +17,7 @@ export const getBlog = (query?: MicroCMSGetQuery) => {
 export const getBlogDetail = (id: string, query?: MicroCMSGetSingularQuery) => {
   return apiClient.blog._blogId(id).$get({ headers, query })
 }
+
+export const fetchCategory = (query?: MicroCMSGetQuery) => {
+  return apiClient.category.$get({ headers, query })
+}
