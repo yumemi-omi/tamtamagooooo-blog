@@ -11,10 +11,10 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function Card(
   const { blog } = props
   const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
   return (
-    <div ref={ref} className="flex min-h-full flex-col rounded-lg bg-base shadow-xl">
+    <div ref={ref} className="flex flex-col min-h-full rounded-lg shadow-xl bg-base">
       {blog.thumbnail ? (
         <Image
-          className="aspect-h-9 aspect-w-16 h-full w-full rounded-t-lg"
+          className="w-full h-full rounded-t-lg aspect-h-9 aspect-w-16"
           src={blog.thumbnail.url}
           alt={`${blog.title}のサムネイル`}
           width={384}
@@ -24,11 +24,14 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function Card(
           objectPosition="center"
         />
       ) : (
-        <div className="fallback-bg aspect-h-9 aspect-w-16 w-full rounded-t-lg" />
+        <div className="w-full rounded-t-lg fallback-bg aspect-h-9 aspect-w-16" />
       )}
-      <div className="flex flex-grow flex-col justify-between p-4">
-        <p className="text-xl font-bold text-sub-accent line-clamp-2">{blog.title}</p>
-        <span className="text-sub-accent">{publishedAt}</span>
+      <div className="flex flex-col justify-between flex-grow p-4">
+        <div className="flex flex-col gap-2">
+          <p className="text-sm font-bold text-gray-600">{blog.category.name}</p>
+          <p className="text-xl font-bold text-gray-800 line-clamp-2">{blog.title}</p>
+        </div>
+        <span className="text-gray-600">{publishedAt}</span>
       </div>
     </div>
   )
