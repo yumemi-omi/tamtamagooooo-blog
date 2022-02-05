@@ -2,6 +2,7 @@ import { forwardRef } from 'react'
 import { Blog } from 'types/microCMS/api/Blog'
 import Image from 'next/image'
 import { format } from 'date-fns'
+import { TagBadge } from 'features/tag/components/TagBadge'
 
 type BlogCardProps = {
   blog: Blog
@@ -28,7 +29,18 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function Card(
       )}
       <div className="flex flex-col justify-between flex-grow p-4">
         <div className="flex flex-col gap-2">
-          <p className="text-sm font-bold text-gray-600">{blog.category.name}</p>
+          <div className="flex items-center justify-between">
+            <p className="self-start font-bold text-gray-600 min-w-max">{blog.category.name}</p>
+            {blog.tags.length !== 0 && (
+              <ul className="flex flex-wrap items-center justify-end gap-1 ml-10">
+                {blog.tags.map((tag) => (
+                  <li key={tag.id}>
+                    <TagBadge badgeColor={tag.color}>{tag.name}</TagBadge>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
           <p className="text-xl font-bold text-gray-800 line-clamp-2">{blog.title}</p>
         </div>
         <span className="text-gray-600">{publishedAt}</span>

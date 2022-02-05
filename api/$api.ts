@@ -7,12 +7,15 @@ import { Methods as Methods0 } from './blog'
 import { Methods as Methods1 } from './blog/_blogId@string'
 // prettier-ignore
 import { Methods as Methods2 } from './category'
+// prettier-ignore
+import { Methods as Methods3 } from './tag'
 
 // prettier-ignore
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   const prefix = (baseURL === undefined ? 'https://undefined.microcms.io/api/v1' : baseURL).replace(/\/$/, '')
   const PATH0 = '/blog'
   const PATH1 = '/category'
+  const PATH2 = '/tag'
   const GET = 'GET'
 
   return {
@@ -43,6 +46,14 @@ const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
         fetch<Methods2['get']['resBody']>(prefix, PATH1, GET, option).json().then(r => r.body),
       $path: (option?: { method?: 'get'; query: Methods2['get']['query'] }) =>
         `${prefix}${PATH1}${option && option.query ? `?${dataToURLString(option.query)}` : ''}`
+    },
+    tag: {
+      get: (option: { query?: Methods3['get']['query'], headers: Methods3['get']['reqHeaders'], config?: T }) =>
+        fetch<Methods3['get']['resBody']>(prefix, PATH2, GET, option).json(),
+      $get: (option: { query?: Methods3['get']['query'], headers: Methods3['get']['reqHeaders'], config?: T }) =>
+        fetch<Methods3['get']['resBody']>(prefix, PATH2, GET, option).json().then(r => r.body),
+      $path: (option?: { method?: 'get'; query: Methods3['get']['query'] }) =>
+        `${prefix}${PATH2}${option && option.query ? `?${dataToURLString(option.query)}` : ''}`
     }
   }
 }
