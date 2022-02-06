@@ -3,16 +3,20 @@ import { Blog } from '@/types/microCMS/api/Blog'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import { TagBadge } from '@/features/tag/components/TagBadge'
+import { Card } from '@/components/shared/Card'
 
 type BlogCardProps = {
   blog: Blog
 }
 
-export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function Card(props, ref) {
+export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogCardWithRef(
+  props,
+  ref,
+) {
   const { blog } = props
   const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
   return (
-    <div ref={ref} className="flex flex-col min-h-full rounded-lg shadow-xl bg-base">
+    <Card ref={ref} className="min-h-full">
       {blog.thumbnail ? (
         <Image
           className="w-full h-full rounded-t-lg aspect-h-9 aspect-w-16"
@@ -47,6 +51,6 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function Card(
         </div>
         <span className="text-gray-600">{publishedAt}</span>
       </div>
-    </div>
+    </Card>
   )
 })
