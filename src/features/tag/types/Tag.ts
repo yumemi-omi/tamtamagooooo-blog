@@ -1,5 +1,5 @@
 import { MicroCMSCommonValue } from '@/types/microCMS/Common'
-import { TagbadgeColorType } from '@/features/tag/constants'
+import { TagbadgeColorType } from '@/features/tag/components/TagBadge'
 
 export type Tag = {
   name: string
