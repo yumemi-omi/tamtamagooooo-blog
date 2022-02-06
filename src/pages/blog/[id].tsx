@@ -32,7 +32,7 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
         {/* TODO: ブログタイトルコンポーネント化 */}
         <div className="flex flex-col items-center w-full gap-4 my-10 text-sub-accent">
           {blog.thumbnail && (
-            <div className="w-full md:w-9/12">
+            <div className="w-screen md:w-9/12">
               <Image
                 className="h-full rounded-lg aspect-h-9 aspect-w-16"
                 src={blog.thumbnail.url}
