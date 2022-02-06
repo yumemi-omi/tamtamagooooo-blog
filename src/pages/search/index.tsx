@@ -1,6 +1,6 @@
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
-import { getBlog } from '@/libs/apiClient'
-import { Blog } from '@/types/microCMS/api/Blog'
+import { fetchPost } from '@/libs/apiClient'
+import { Post } from '@/types/microCMS/api/Post'
 import { ReactNode, VFC } from 'react'
 import { Seo } from '@/components/shared/Seo'
 import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
@@ -8,7 +8,7 @@ import { PostSearch } from '@/features/search/components/PostSearch'
 import { Posts } from '@/components/screen/blog/Posts'
 
 type Props = {
-  posts: Blog[]
+  posts: Post[]
   children: ReactNode
 }
 
@@ -41,7 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext,
 ) => {
   const query = context.query.q as string
-  const data = await getBlog({
+  const data = await fetchPost({
     q: query,
   })
   return {

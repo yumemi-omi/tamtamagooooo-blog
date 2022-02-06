@@ -1,8 +1,8 @@
 import { client } from '@/libs/microCmsClient'
-import { getBlogDetail } from '@/libs/apiClient'
+import { fetchPostDetail } from '@/libs/apiClient'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
-import { Blog } from '@/types/microCMS/api/Blog'
+import { Post } from '@/types/microCMS/api/Post'
 import { GetStaticPropsContext } from 'next'
 import { VFC } from 'react'
 import { Content } from '@/components/screen/blog/Content'
@@ -13,30 +13,30 @@ import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 
 type Props = {
-  blog: Blog
+  post: Post
   highlightedBody: string
 }
 
-const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
-  const publishedAt = format(new Date(blog.publishedAt), 'yyyy/MM/dd')
+const PostId: VFC = ({ post, highlightedBody }: Props) => {
+  const publishedAt = format(new Date(post.publishedAt), 'yyyy/MM/dd')
 
   return (
     <>
       <Seo
-        path={`/blog/${blog.id}`}
-        ogImagePath={blog.thumbnail ? blog.thumbnail.url : ''}
-        title={blog.title}
-        description={blog.summary}
+        path={`/post/${post.id}`}
+        ogImagePath={post.thumbnail ? post.thumbnail.url : ''}
+        title={post.title}
+        description={post.summary}
       />
       <NarrowView className="flex flex-col items-center justify-center">
         {/* TODO: ブログタイトルコンポーネント化 */}
         <div className="flex flex-col items-center w-full gap-4 my-10 text-sub-accent">
-          {blog.thumbnail && (
+          {post.thumbnail && (
             <div className="w-screen md:w-9/12">
               <Image
                 className="h-full rounded-lg aspect-h-9 aspect-w-16"
-                src={blog.thumbnail.url}
-                alt={`${blog.title}のサムネイル`}
+                src={post.thumbnail.url}
+                alt={`${post.title}のサムネイル`}
                 width={600}
                 height={371}
                 layout="responsive"
@@ -49,11 +49,11 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <p className="self-start px-2 py-1 font-bold border border-solid rounded text-sub-accent border-sub-accent min-w-max">
-                  {blog.category.name}
+                  {post.category.name}
                 </p>
-                {blog.tags.length !== 0 && (
+                {post.tags.length !== 0 && (
                   <ul className="flex flex-wrap items-center justify-end gap-1 ml-10">
-                    {blog.tags.map((tag) => (
+                    {post.tags.map((tag) => (
                       <li key={tag.id}>
                         <TagBadge badgeColor={tag.color}>{tag.name}</TagBadge>
                       </li>
@@ -62,7 +62,7 @@ const BlogId: VFC = ({ blog, highlightedBody }: Props) => {
                 )}
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-800">{blog.title}</p>
+            <p className="text-3xl font-bold text-gray-800">{post.title}</p>
             <span className="text-gray-600">{publishedAt}</span>
           </div>
         </div>
@@ -77,9 +77,9 @@ export const getStaticPaths = async (): Promise<{
   paths: any
   fallback: boolean
 }> => {
-  const data: any = await client.get({ endpoint: 'blog' })
+  const data: any = await client.get({ endpoint: 'post' })
 
-  const paths = data.contents.map((content) => `/blog/${content.id}`)
+  const paths = data.contents.map((content) => `/post/${content.id}`)
   return { paths, fallback: false }
 }
 
@@ -90,7 +90,7 @@ export const getStaticProps = async (
   props: Props
 }> => {
   const id = context.params.id as string
-  const data = await getBlogDetail(id)
+  const data = await fetchPostDetail(id)
   if (data.body) {
     const $ = cheerio.load(data.body)
 
@@ -112,18 +112,18 @@ export const getStaticProps = async (
 
     return {
       props: {
-        blog: data,
+        post: data,
         highlightedBody: $.html(),
       },
     }
   } else {
     return {
       props: {
-        blog: data,
+        post: data,
         highlightedBody: '',
       },
     }
   }
 }
 
-export default BlogId
+export default PostId

@@ -1,4 +1,4 @@
-import { Blog } from '@/types/microCMS/api/Blog'
+import { Post } from '@/types/microCMS/api/Post'
 import { MicroCMSCaptionValue } from '@/types/microCMS/Common'
 import { MicroCMSReqHeaders } from '@/types/microCMS/Headers'
 import { MicroCMSGetQuery } from '@/types/microCMS/Query'
@@ -6,7 +6,7 @@ import { MicroCMSGetQuery } from '@/types/microCMS/Query'
 export type Methods = {
   get: {
     resBody: {
-      contents: Blog[]
+      contents: Post[]
     } & MicroCMSCaptionValue
     query?: MicroCMSGetQuery
     reqHeaders: MicroCMSReqHeaders

@@ -1,10 +1,10 @@
 import { MicroCMSReqHeaders } from '@/types/microCMS/Headers'
 import { MicroCMSGetSingularQuery } from '@/types/microCMS/Query'
-import { Blog } from '@/types/microCMS/api/Blog'
+import { Post } from '@/types/microCMS/api/Post'
 
 export type Methods = {
   get: {
-    resBody: Blog
+    resBody: Post
     query?: MicroCMSGetSingularQuery
     reqHeaders: MicroCMSReqHeaders
   }

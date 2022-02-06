@@ -10,12 +10,12 @@ const axiosConfig = {
 }
 export const apiClient = api(aspida(axios, axiosConfig))
 
-export const getBlog = (query?: MicroCMSGetQuery) => {
-  return apiClient.blog.$get({ headers, query })
+export const fetchPost = (query?: MicroCMSGetQuery) => {
+  return apiClient.post.$get({ headers, query })
 }
 
-export const getBlogDetail = (id: string, query?: MicroCMSGetSingularQuery) => {
-  return apiClient.blog._blogId(id).$get({ headers, query })
+export const fetchPostDetail = (id: string, query?: MicroCMSGetSingularQuery) => {
+  return apiClient.post._postId(id).$get({ headers, query })
 }
 
 export const fetchCategory = (query?: MicroCMSGetQuery) => {

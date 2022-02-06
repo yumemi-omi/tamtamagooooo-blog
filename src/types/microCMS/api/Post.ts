@@ -3,7 +3,7 @@ import { MicroCMSCommonValue } from '@/types/microCMS/Common'
 import { Category } from './Category'
 import { Tag } from '@/features/tag/types/Tag'
 
-export type Blog = {
+export type Post = {
   title: TextField
   summary?: TextArea
   body: RichEdit

@@ -1,6 +1,6 @@
 import { GetStaticProps } from 'next'
-import { getBlog } from '@/libs/apiClient'
-import { Blog } from '@/types/microCMS/api/Blog'
+import { fetchPost } from '@/libs/apiClient'
+import { Post } from '@/types/microCMS/api/Post'
 import { ReactNode, VFC } from 'react'
 import { Seo } from '@/components/shared/Seo'
 import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
@@ -8,7 +8,7 @@ import { PostSearch } from '@/features/search/components/PostSearch'
 import { Posts } from '@/components/screen/blog/Posts'
 
 type Props = {
-  posts: Blog[]
+  posts: Post[]
   children: ReactNode
 }
 
@@ -36,7 +36,7 @@ const Home: VFC<Props> = ({ posts }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await getBlog()
+  const data = await fetchPost()
 
   return {
     props: {
