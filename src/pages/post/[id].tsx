@@ -101,7 +101,7 @@ export const getStaticProps = async (
     })
     $('iframe').each((_, elm) => {
       const wrapDiv = $(
-        '<div class="hogehogehogehoge" style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"></div>',
+        '<div class="iframe-wrapper" style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"></div>',
       )
       $(elm).wrap(wrapDiv)
       $(elm)

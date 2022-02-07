@@ -5,7 +5,7 @@ type Props = {
 }
 
 export const VerticalLaneLayout = ({ children }: Props) => {
-  return <div className="flex gap-10 flex-col md:flex-row lg:flex-row">{children}</div>
+  return <div className="flex flex-col gap-10 md:flex-row lg:flex-row">{children}</div>
 }
 
 const LeftSide: VFC<Props> = ({ children }) => {
