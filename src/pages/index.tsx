@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next'
-import { fetchPost } from '@/libs/apiClient'
+import { fetchPost } from '@/features/post/api/fetchPost'
 import { Post } from '@/types/microCMS/api/Post'
 import { ReactNode, VFC } from 'react'
 import { Seo } from '@/components/shared/Seo'

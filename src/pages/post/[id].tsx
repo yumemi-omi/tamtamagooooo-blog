@@ -1,5 +1,5 @@
 import { client } from '@/libs/microCmsClient'
-import { fetchPostDetail } from '@/libs/apiClient'
+import { fetchPostDetail } from '@/features/post/api/fetchPostDetail'
 import cheerio from 'cheerio'
 import hljs from 'highlight.js'
 import { Post } from '@/types/microCMS/api/Post'
