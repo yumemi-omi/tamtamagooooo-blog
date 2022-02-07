@@ -1,4 +1,5 @@
-import { nextApiClient } from '@/libs/apiClient'
+import cheerio from 'cheerio'
+import hljs from 'highlight.js'
 import { Post } from '@/types/microCMS/api/Post'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { VFC } from 'react'
@@ -8,6 +9,7 @@ import { NarrowView } from '@/components/shared/NarrowView'
 import { Seo } from '@/components/shared/Seo'
 import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
+import { fetchPostDetail } from '@/features/post/api/fetchPostDetail'
 
 type Props = {
   post: Post
@@ -78,13 +80,40 @@ export const getServerSideProps: GetServerSideProps = async (
 ) => {
   const id = context.params ? (context.params.id as string) : ''
   const draftKey = context.query.draftKey as string
-  const data = await nextApiClient.preview.post.$get({ query: { id, draftKey } })
-  console.log({ data })
-  return {
-    props: {
-      post: data.post,
-      highlightedBody: data.highlightedBody,
-    },
+  const data = await fetchPostDetail(id, { draftKey })
+
+  if (data.body) {
+    const $ = cheerio.load(data.body)
+
+    $('pre code').each((_, elm) => {
+      const result = hljs.highlightAuto($(elm).text())
+      $(elm).html(result.value)
+      $(elm).addClass('hljs')
+    })
+    $('iframe').each((_, elm) => {
+      const wrapDiv = $(
+        '<div class="iframe-wrapper" style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"></div>',
+      )
+      $(elm).wrap(wrapDiv)
+      $(elm)
+        .attr('width', null)
+        .attr('height', null)
+        .attr('style', 'border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;')
+    })
+
+    return {
+      props: {
+        post: data,
+        highlightedBody: $.html(),
+      },
+    }
+  } else {
+    return {
+      props: {
+        post: data,
+        highlightedBody: '',
+      },
+    }
   }
 }
 
