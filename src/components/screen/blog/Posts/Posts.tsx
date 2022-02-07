@@ -9,18 +9,16 @@ type Props = {
 
 export const Posts: VFC<Props> = ({ posts }) => {
   return (
-    posts.length !== 0 && (
-      <ul className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2 xl:gap-8">
-        {posts.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/post/${blog.id}`}>
-              <a>
-                <BlogCard post={blog} />
-              </a>
-            </Link>
-          </li>
-        ))}
-      </ul>
-    )
+    <ul className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2 xl:gap-8">
+      {posts.map((blog) => (
+        <li key={blog.id}>
+          <Link href={`/post/${blog.id}`}>
+            <a>
+              <BlogCard post={blog} />
+            </a>
+          </Link>
+        </li>
+      ))}
+    </ul>
   )
 }

@@ -1,6 +1,4 @@
-import { fetchPostDetail } from '@/features/post/api/fetchPostDetail'
-import cheerio from 'cheerio'
-import hljs from 'highlight.js'
+import { nextApiClient } from '@/libs/apiClient'
 import { Post } from '@/types/microCMS/api/Post'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { VFC } from 'react'
@@ -16,8 +14,11 @@ type Props = {
   highlightedBody: string
 }
 
-const PreviewPost: VFC = ({ post, highlightedBody }: Props) => {
-  const publishedAt = format(new Date(post.publishedAt), 'yyyy/MM/dd')
+const PreviewPost: VFC<Props> = ({ post, highlightedBody }) => {
+  const publishedAt = format(
+    post.publishedAt ? new Date(post.publishedAt) : new Date(),
+    'yyyy/MM/dd',
+  )
 
   return (
     <>
@@ -75,41 +76,15 @@ const PreviewPost: VFC = ({ post, highlightedBody }: Props) => {
 export const getServerSideProps: GetServerSideProps = async (
   context: GetServerSidePropsContext,
 ) => {
-  const id = context.params.id as string
+  const id = context.params ? (context.params.id as string) : ''
   const draftKey = context.query.draftKey as string
-  const data = await fetchPostDetail(id, { draftKey })
-  if (data.body) {
-    const $ = cheerio.load(data.body)
-
-    $('pre code').each((_, elm) => {
-      const result = hljs.highlightAuto($(elm).text())
-      $(elm).html(result.value)
-      $(elm).addClass('hljs')
-    })
-    $('iframe').each((_, elm) => {
-      const wrapDiv = $(
-        '<div class="iframe-wrapper" style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"></div>',
-      )
-      $(elm).wrap(wrapDiv)
-      $(elm)
-        .attr('width', null)
-        .attr('height', null)
-        .attr('style', 'border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;')
-    })
-
-    return {
-      props: {
-        post: data,
-        highlightedBody: $.html(),
-      },
-    }
-  } else {
-    return {
-      props: {
-        post: data,
-        highlightedBody: '',
-      },
-    }
+  const data = await nextApiClient.preview.post.$get({ query: { id, draftKey } })
+  console.log({ data })
+  return {
+    props: {
+      post: data.post,
+      highlightedBody: data.highlightedBody,
+    },
   }
 }
 

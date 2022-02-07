@@ -2,8 +2,8 @@ export type MicroCMSCommonValue = {
   id: string
   createdAt: string
   updatedAt: string
-  publishedAt: string
-  revisedAt: string
+  publishedAt?: string
+  revisedAt?: string
 }
 
 export type MicroCMSCaptionValue = {
@@ -11,3 +11,7 @@ export type MicroCMSCaptionValue = {
   offset: number
   limit: number
 }
+
+export type MicroCMSListValue<T> = {
+  contents: T[]
+} & MicroCMSCaptionValue

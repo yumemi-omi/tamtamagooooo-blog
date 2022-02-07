@@ -14,7 +14,11 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
   ref,
 ) {
   const { post } = props
-  const publishedAt = format(new Date(post.publishedAt), 'yyyy/MM/dd')
+  const publishedAt = format(
+    post.publishedAt ? new Date(post.publishedAt) : new Date(),
+    'yyyy/MM/dd',
+  )
+
   return (
     <Card ref={ref} className="min-h-full">
       {post.thumbnail ? (

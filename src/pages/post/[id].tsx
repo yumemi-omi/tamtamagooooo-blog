@@ -11,14 +11,18 @@ import { NarrowView } from '@/components/shared/NarrowView'
 import { Seo } from '@/components/shared/Seo'
 import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
+import { MicroCMSListValue } from '@/types/microCMS/Common'
 
 type Props = {
   post: Post
   highlightedBody: string
 }
 
-const PostId: VFC = ({ post, highlightedBody }: Props) => {
-  const publishedAt = format(new Date(post.publishedAt), 'yyyy/MM/dd')
+const PostId: VFC<Props> = ({ post, highlightedBody }) => {
+  const publishedAt = format(
+    post.publishedAt ? new Date(post.publishedAt) : new Date(),
+    'yyyy/MM/dd',
+  )
 
   return (
     <>
@@ -77,7 +81,7 @@ export const getStaticPaths = async (): Promise<{
   paths: any
   fallback: boolean
 }> => {
-  const data: any = await client.get({ endpoint: 'post' })
+  const data: MicroCMSListValue<Post> = await client.get({ endpoint: 'post' })
 
   const paths = data.contents.map((content) => `/post/${content.id}`)
   return { paths, fallback: false }
@@ -89,7 +93,7 @@ export const getStaticProps = async (
 ): Promise<{
   props: Props
 }> => {
-  const id = context.params.id as string
+  const id = context.params ? (context.params.id as string) : ''
   const data = await fetchPostDetail(id)
   if (data.body) {
     const $ = cheerio.load(data.body)

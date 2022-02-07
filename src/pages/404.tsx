@@ -1,6 +1,6 @@
 import { Seo } from '@/components/shared/Seo'
 
-export default function Custom404(props) {
+export default function Custom404() {
   return (
     <>
       <Seo path="/404" noindex title="エラー" />
