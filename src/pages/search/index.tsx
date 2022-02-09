@@ -9,13 +9,17 @@ import { Posts } from '@/components/screen/blog/Posts'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
 import { Category } from '@/types/microCMS/api/Category'
 import { CategoryTile } from '@/features/category/components/CategoryTile'
+import { TagTile } from '@/features/tag/components/TagTile'
+import { fetchTag } from '@/features/tag/api/fetchTag'
+import { Tag } from '@/features/tag/types/Tag'
 
 type Props = {
   posts: Post[]
   categories: Category[]
+  tags: Tag[]
 }
 
-const Search: VFC<Props> = ({ posts, categories }) => {
+const Search: VFC<Props> = ({ posts = [], categories = [], tags = [] }) => {
   return (
     <>
       <Seo path="/search" title="検索結果" description="とりあえず書く、たまごであった" />
@@ -35,6 +39,7 @@ const Search: VFC<Props> = ({ posts, categories }) => {
         <VerticalLaneLayout.RightSide>
           <PostSearch />
           <CategoryTile categories={categories} />
+          <TagTile tags={tags} />
         </VerticalLaneLayout.RightSide>
       </VerticalLaneLayout>
     </>
@@ -49,11 +54,13 @@ export const getServerSideProps: GetServerSideProps = async (
     q: query,
   })
   const categoryResponse = await fetchCategory()
+  const tagResponse = await fetchTag()
 
   return {
     props: {
       posts: data.contents,
       categories: categoryResponse.contents,
+      tags: tagResponse.contents,
     },
   }
 }

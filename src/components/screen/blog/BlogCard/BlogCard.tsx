@@ -44,7 +44,7 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
               <ul className="flex flex-wrap items-center justify-end gap-1 ml-10">
                 {post.tags.map((tag) => (
                   <li key={tag.id}>
-                    <TagBadge badgeColor={tag.color}>{tag.name}</TagBadge>
+                    <TagBadge tag={tag} />
                   </li>
                 ))}
               </ul>

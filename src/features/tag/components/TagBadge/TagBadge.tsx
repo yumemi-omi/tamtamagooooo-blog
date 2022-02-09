@@ -1,4 +1,5 @@
-import { ReactNode, VFC } from 'react'
+import { VFC } from 'react'
+import { Tag } from '@/features/tag/types/Tag'
 
 const TAG_BADGE_COLOR_SET = {
   gray: 'bg-gray-800',
@@ -12,16 +13,17 @@ const TAG_BADGE_COLOR_SET = {
 export type TagbadgeColorType = keyof typeof TAG_BADGE_COLOR_SET
 
 type Props = {
-  children: ReactNode
-  badgeColor?: TagbadgeColorType
+  tag: Tag
 }
 
-export const TagBadge: VFC<Props> = ({ children, badgeColor = 'gray' }) => {
+export const TagBadge: VFC<Props> = ({ tag }) => {
   return (
     <span
-      className={`rounded-full text-white px-3 py-1 text-xs uppercase font-medium ${TAG_BADGE_COLOR_SET[badgeColor]}`}
+      className={`rounded-full text-white px-3 py-1 text-xs uppercase font-medium ${
+        TAG_BADGE_COLOR_SET[tag.color]
+      }`}
     >
-      {children}
+      {tag.name}
     </span>
   )
 }

@@ -12,6 +12,7 @@ import { Seo } from '@/components/shared/Seo'
 import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { MicroCMSListValue } from '@/types/microCMS/Common'
+import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 
 type Props = {
   post: Post
@@ -52,14 +53,12 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
           <div className="flex flex-col justify-between flex-grow w-full gap-4">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
-                <p className="self-start px-2 py-1 font-bold border border-solid rounded text-sub-accent border-sub-accent min-w-max">
-                  {post.category.name}
-                </p>
+                <CategoryBadge category={post.category} />
                 {post.tags.length !== 0 && (
                   <ul className="flex flex-wrap items-center justify-end gap-1 ml-10">
                     {post.tags.map((tag) => (
                       <li key={tag.id}>
-                        <TagBadge badgeColor={tag.color}>{tag.name}</TagBadge>
+                        <TagBadge tag={tag} />
                       </li>
                     ))}
                   </ul>
