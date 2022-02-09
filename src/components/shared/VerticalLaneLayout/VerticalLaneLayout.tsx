@@ -17,7 +17,7 @@ const Body: VFC<Props> = ({ children }) => {
 }
 
 const RightSide: VFC<Props> = ({ children }) => {
-  return <aside className="flex-grow">{children}</aside>
+  return <aside className="flex flex-col flex-grow gap-10">{children}</aside>
 }
 
 VerticalLaneLayout.LeftSide = LeftSide

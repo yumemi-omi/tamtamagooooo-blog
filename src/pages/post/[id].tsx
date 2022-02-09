@@ -78,7 +78,7 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
 
 // 静的生成のためのパスを指定します
 export const getStaticPaths = async (): Promise<{
-  paths: any
+  paths: string[]
   fallback: boolean
 }> => {
   const data: MicroCMSListValue<Post> = await client.get({ endpoint: 'post' })

@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { format } from 'date-fns'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { Card } from '@/components/shared/Card'
+import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 
 type BlogCardProps = {
   post: Post
@@ -38,9 +39,7 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
       <div className="flex flex-col justify-between flex-grow p-4">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
-            <p className="self-start px-2 py-1 font-bold border border-solid rounded text-sub-accent border-sub-accent min-w-max">
-              {post.category.name}
-            </p>
+            <CategoryBadge category={post.category} />
             {post.tags.length !== 0 && (
               <ul className="flex flex-wrap items-center justify-end gap-1 ml-10">
                 {post.tags.map((tag) => (
