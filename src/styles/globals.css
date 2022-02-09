@@ -27,3 +27,6 @@
   }
 }
 
+.hover-zoom-in:hover {
+  @apply duration-300 transform scale-110;
+}
