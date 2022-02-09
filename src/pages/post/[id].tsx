@@ -13,6 +13,7 @@ import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { MicroCMSListValue } from '@/types/microCMS/Common'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
+import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
 
 type Props = {
   post: Post
@@ -24,6 +25,7 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
   )
+  const thumbnail = post.thumbnail?.url ?? getdDefaultThumbnailByCategory(post.category.name)
 
   return (
     <>
@@ -36,11 +38,11 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
       <NarrowView className="flex flex-col items-center justify-center">
         {/* TODO: ブログタイトルコンポーネント化 */}
         <div className="flex flex-col items-center w-full gap-4 my-10 text-sub-accent">
-          {post.thumbnail && (
+          {thumbnail && (
             <div className="w-screen md:w-9/12">
               <Image
                 className="h-full rounded-lg aspect-h-9 aspect-w-16"
-                src={post.thumbnail.url}
+                src={thumbnail}
                 alt={`${post.title}のサムネイル`}
                 width={600}
                 height={371}

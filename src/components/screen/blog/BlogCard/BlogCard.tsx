@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { Card } from '@/components/shared/Card'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
+import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
 
 type BlogCardProps = {
   post: Post
@@ -19,13 +20,14 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
   )
+  const thumbnail = post.thumbnail?.url ?? getdDefaultThumbnailByCategory(post.category.name)
 
   return (
     <Card ref={ref} className="min-h-full">
-      {post.thumbnail ? (
+      {thumbnail ? (
         <Image
           className="w-full h-full rounded-t-lg aspect-h-9 aspect-w-16"
-          src={post.thumbnail.url}
+          src={thumbnail}
           alt={`${post.title}のサムネイル`}
           width={384}
           height={216}
