@@ -6,13 +6,6 @@ type Props = {
   onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
 }
 
-// export const ForwardRefWrapper = forwardRef<HTMLDivElement, Props>(function WrapperWithRef(
-//   { children },
-//   ref,
-// ) {
-//   return <div ref={ref}>{children}</div>
-// })
-
 export const AnchorWrapper = forwardRef<HTMLAnchorElement, Props>(function AnchorWithRef(
   { onClick, href, children },
   ref,
