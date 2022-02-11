@@ -37,9 +37,9 @@ const PreviewPost: VFC<Props> = ({ post, highlightedBody }) => {
         {/* TODO: ブログタイトルコンポーネント化 */}
         <div className="flex flex-col items-center w-full gap-4 my-10 text-sub-accent">
           {thumbnail && (
-            <div className="w-screen blur-image-wrap md:w-9/12">
+            <div className="w-screen md:w-9/12">
               <Image
-                className="h-full rounded-lg aspect-h-9 aspect-w-16"
+                className="h-full rounded-lg shadow-inner aspect-h-9 aspect-w-16"
                 src={thumbnail}
                 alt={`${post.title}のサムネイル`}
                 width={600}

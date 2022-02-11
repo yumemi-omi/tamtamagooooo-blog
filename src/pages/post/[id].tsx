@@ -39,7 +39,7 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
         {/* TODO: ブログタイトルコンポーネント化 */}
         <div className="flex flex-col items-center w-full gap-4 my-10 text-sub-accent">
           {thumbnail && (
-            <div className="w-screen blur-image-wrap md:w-9/12">
+            <div className="w-screen rounded-lg blur-next-image-wrap md:w-9/12">
               <Image
                 className="h-full rounded-lg aspect-h-9 aspect-w-16"
                 src={thumbnail}
@@ -107,7 +107,6 @@ export const getStaticProps = async (
     $('img').each((_, elm) => {
       const wrapDiv = $('<div class="blur-image-wrap"></div>')
       $(elm).wrap(wrapDiv)
-      $(elm).addClass('blur-image')
     })
     $('iframe').each((_, elm) => {
       const wrapDiv = $(

@@ -20,32 +20,71 @@
     background: var(--color-magnolia);
   }
 
-  .blur-image-wrap,
-  .blur-image-wrap > div {
-    position: relative;
-    width: 600px;
-    height: 371px;
+  /* for image included post's content */
+  .blur-image-wrap {
     display: flex;
+    position: relative;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
+    border-radius: 8px;
   }
-
-  .blur-image-wrap::after,
-  .blur-image-wrap > div::after  {
+  .blur-image-wrap > img {
+    flex: 1 !important;
+    border-radius: 8px !important;
+    margin: auto !important;
+  }
+  .blur-image-wrap::after {
     position: absolute;
     content: '';
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    box-shadow: inset 0 0 10px 15px var(--color-magnolia);
+    box-shadow: inset 0 0 25px 5px var(--color-magnolia);
   }
 
-  .blur-image-wrap > img,
-  .blur-image-wrap > div > img {
-    width: 100%;
+ /* for next/image component */
+  .blur-next-image-wrap > div {
+    position: relative;
+    width: 100vw;
     height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+  @media screen and (min-width: 768px) {
+    .blur-next-image-wrap > div {
+      width: auto;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .blur-next-image-wrap > div {
+      width: auto;
+    }
+  }
+  .blur-next-image-wrap > div::after  {
+    position: absolute;
+    content: '';
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: inset 0 0 25px 5px var(--color-magnolia);
+  }
+  .blur-next-image-wrap > div > img {
+    width: 100vw;
+    height: 100%;
+  }
+  @media screen and (min-width: 768px) {
+    .blur-next-image-wrap > div > img {
+      width: auto;
+    }
+  }
+  @media screen and (min-width: 1024px) {
+    .blur-next-image-wrap > div > img {
+      width: auto;
+    }
   }
 }
 
