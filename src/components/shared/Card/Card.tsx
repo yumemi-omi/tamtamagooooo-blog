@@ -6,7 +6,7 @@ type Props = {
 
 export const Card: React.VFC<Props> = ({ children, className, ref }) => {
   return (
-    <div ref={ref} className={`rounded-lg shadow-xl bg-base ${className}`}>
+    <div ref={ref} className={`z-10 rounded-lg shadow-xl bg-base ${className}`}>
       {children}
     </div>
   )
