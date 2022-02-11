@@ -23,7 +23,7 @@ export const PostSearch: React.VFC = () => {
     <form onSubmit={handleSubmit}>
       <div>
         <label className="block mb-1 font-bold text-gray-600">サイト内検索</label>
-        <div className="flex items-center gap-1">
+        <div className="flex flex-wrap items-center gap-1">
           <input
             id="keyword"
             type="text"
