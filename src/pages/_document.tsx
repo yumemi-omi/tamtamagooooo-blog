@@ -16,10 +16,12 @@ class MyDocument extends Document {
           <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
           <link rel="manifest" href="/favicons/site.webmanifest" />
           <link rel="mask-icon" href="/favicons/safari-pinned-tab.svg" color="#5bbad5" />
+          <link rel="shortcut icon" href="/favicons/favicon.ico" />
           <meta name="apple-mobile-web-app-title" content="toritama blog" />
           <meta name="application-name" content="toritama blog" />
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ad6c6c"></meta>
+          <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
         </Head>
         <body>
           <Main />
