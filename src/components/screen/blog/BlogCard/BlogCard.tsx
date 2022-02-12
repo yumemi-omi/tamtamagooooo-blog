@@ -20,7 +20,9 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
   )
-  const thumbnail = post.thumbnail?.url ?? getdDefaultThumbnailByCategory(post.category.name)
+  const thumbnail = post.thumbnail?.url
+    ? `${post.thumbnail.url}?fit=clip&w=600&q=60`
+    : getdDefaultThumbnailByCategory(post.category.name)
 
   return (
     <Card ref={ref} className="min-h-full">

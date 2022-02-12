@@ -27,7 +27,9 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
   )
-  const thumbnail = post.thumbnail?.url ?? getdDefaultThumbnailByCategory(post.category.name)
+  const thumbnail = post.thumbnail?.url
+    ? `${post.thumbnail.url}?fit=clip&w=600`
+    : getdDefaultThumbnailByCategory(post.category.name)
 
   return (
     <>
