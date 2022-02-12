@@ -14,9 +14,9 @@ export type SeoProps = {
 export const Seo: VFC<SeoProps> = (props) => {
   const {
     path,
-    title = 'Default title',
-    description = 'Default description',
-    ogImagePath = '/default-og.png',
+    title = 'とりたま日記',
+    description = 'とりあえず書く、たまごであった',
+    ogImagePath = '/images/tamagoonrice.png',
     noindex,
     noTitleTemplate,
   } = props

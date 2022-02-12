@@ -33,9 +33,9 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
     <>
       <Seo
         path={`/post/${post.id}`}
-        ogImagePath={post.thumbnail ? post.thumbnail.url : ''}
         title={post.title}
         description={post.summary}
+        ogImagePath={thumbnail}
       />
       <VerticalLaneLayout>
         <VerticalLaneLayout.LeftSide>
