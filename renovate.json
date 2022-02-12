@@ -1,5 +1,5 @@
 {
-  "baseBranches": ["develop"],
+  "baseBranches": ["main"],
   "timezone": "Asia/Tokyo",
   "schedule": "every weekend",
   "automergeType": "branch",
