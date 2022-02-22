@@ -6,7 +6,7 @@ async function sha256(text: string) {
     .join('')
 }
 
-export default async function likeHandler(req, res) {
+export default async function likeHandler(req: any, res: any) {
   const {
     query: { id, name },
     method,
