@@ -3,7 +3,7 @@ export const getdDefaultThumbnailByCategory = (categoryName: string) => {
     case '旅行':
       return '/traveling.jpg'
     case '日常':
-      return '/daily.jpg'
+      return '/life.jpg'
     case '料理':
       return '/cooking.jpg'
     default:
