@@ -18,5 +18,6 @@ module.exports = {
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
     'react-hooks/exhaustive-deps': 'warn',
+    "@typescript-eslint/explicit-module-boundary-types": "off"
   },
 }
