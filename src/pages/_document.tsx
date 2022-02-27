@@ -22,6 +22,10 @@ class MyDocument extends Document {
           <meta name="msapplication-TileColor" content="#da532c" />
           <meta name="theme-color" content="#ad6c6c"></meta>
           <meta name="msapplication-config" content="/favicons/browserconfig.xml" />
+          <meta
+            name="google-site-verification"
+            content="T9nHxWMda7U-Tl-knveNHMwws7RpGKK-bM0nzp7dhkQ"
+          />
         </Head>
         <body>
           <Main />
