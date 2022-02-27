@@ -16,13 +16,18 @@ import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
 import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
 import { ShareButtonList } from '@/features/sns/components/ShareButtonList'
+// import { fetchPost } from '@/features/supabase/post/fetchPost'
+// import { nextApiClient } from '@/libs/apiClient'
+// import { useDebounce } from '@/shared/hooks/useDebounce'
 
 type Props = {
   post: Post
   highlightedBody: string
+  // likePost: any[]
 }
 
 const PostId: VFC<Props> = ({ post, highlightedBody }) => {
+  // const debounce = useDebounce(1000)
   const publishedAt = format(
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
@@ -30,6 +35,21 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
   const thumbnail = post.thumbnail?.url
     ? `${post.thumbnail.url}?fit=clip&w=600`
     : getdDefaultThumbnailByCategory(post.category.name)
+
+  // const onGet = async () => {
+  //   debounce(async () => {
+  //     const response = await nextApiClient.like_by_user.$get({ query: { post_id: post.id } })
+  //     console.log({ response })
+  //   })
+  // }
+  // const onUpdate = async () => {
+  //   debounce(async () => {
+  //     const response = await nextApiClient.like_by_user.$post({
+  //       query: { post_id: post.id, count: 1 },
+  //     })
+  //     console.log({ response })
+  //   })
+  // }
 
   return (
     <>
@@ -42,6 +62,9 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
       <VerticalLaneLayout>
         <VerticalLaneLayout.LeftSide>
           <div className="sticky hidden w-full gap-4 md:block lg:block top-60">
+            {/* <button onClick={onGet}>取得するよ</button>
+            <button onClick={onUpdate}>更新するよ</button> */}
+
             <ShareButtonList title={post.title} />
           </div>
         </VerticalLaneLayout.LeftSide>
@@ -113,6 +136,9 @@ export const getStaticProps = async (
   props: Props
 }> => {
   const id = context.params ? (context.params.id as string) : ''
+  // const response = await fetchPost(id)
+  // const likePost = response.data || []
+
   const data = await fetchPostDetail(id)
   if (data.body) {
     const $ = cheerio.load(data.body)
@@ -141,6 +167,7 @@ export const getStaticProps = async (
       props: {
         post: data,
         highlightedBody: $.html(),
+        // likePost,
       },
     }
   } else {
@@ -148,6 +175,7 @@ export const getStaticProps = async (
       props: {
         post: data,
         highlightedBody: '',
+        // likePost,
       },
     }
   }
