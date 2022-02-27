@@ -45,7 +45,7 @@ const Home: VFC<Props> = ({ posts = [], categories = [], tags = [] }) => {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetchPost()
+  const data = await fetchPost({ orders: '-publishedAt' })
   const categoryResponse = await fetchCategory()
   const tagResponse = await fetchTag()
 

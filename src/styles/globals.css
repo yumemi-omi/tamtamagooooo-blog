@@ -13,6 +13,17 @@
   --color-magnolia: #f1effb;
   --color-geranium: #DE3131;
   --color-forest-green: #75A176;
+
+  --tia-maria-50: #fef6ee;
+  --tia-maria-100: #fdecd7;
+  --tia-maria-200: #fbd4ad;
+  --tia-maria-300: #f7b57a;
+  --tia-maria-400: #f38c44;
+  --tia-maria-500: #f06d1f;
+  --tia-maria-600: #e15315;
+  --tia-maria-700: #cb4315;
+  --tia-maria-800: #953217;
+  --tia-maria-900: #782b16;
 }
 
 @layer base {
