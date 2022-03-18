@@ -22,14 +22,10 @@ type Props = {
 
 const Search: VFC<Props> = ({ categories = [], tags = [] }) => {
   const router = useRouter()
-  const { data, error } = useSWR<
-    MicroCMSListResponse<{
-      contens: Post[]
-      totalCount: number
-      offset: number
-      limit: number
-    }>
-  >(`/api/search?q=${router.query.q}`, (url) => fetch(url).then((res) => res.json()))
+  const { data, error } = useSWR<MicroCMSListResponse<Post>>(
+    `/api/search?q=${router.query.q}`,
+    (url) => fetch(url).then((res) => res.json()),
+  )
   const posts = data?.contents || []
   const loading = !error && !data
 
