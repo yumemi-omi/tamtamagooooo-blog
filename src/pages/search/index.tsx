@@ -29,8 +29,6 @@ const Search: VFC<Props> = ({ categories = [], tags = [] }) => {
   const posts = data?.contents || []
   const loading = !error && !data
 
-  if (loading) return <div>Loading...</div>
-
   if (error) return <div>Error!</div>
 
   return (
@@ -38,7 +36,15 @@ const Search: VFC<Props> = ({ categories = [], tags = [] }) => {
       <Seo path="/search" title="検索結果" description="とりあえず書く、たまごであった" />
       <VerticalLaneLayout>
         <VerticalLaneLayout.Body>
-          {posts.length !== 0 ? (
+          {loading ? (
+            <div className="flex items-center gap-4">
+              <div
+                className="w-8 h-8 border-4 rounded-full border-tia-maria-200 border-t-tia-maria-400 animate-spin"
+                role="status"
+              />
+              <span className="text-center">読み込み中</span>
+            </div>
+          ) : posts.length !== 0 ? (
             <Posts posts={posts} />
           ) : (
             <div>
