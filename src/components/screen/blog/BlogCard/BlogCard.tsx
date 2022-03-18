@@ -20,6 +20,7 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
   )
+  const updatedAt = format(post.updatedAt ? new Date(post.updatedAt) : new Date(), 'yyyy/MM/dd')
   const thumbnail = post.thumbnail?.url
     ? `${post.thumbnail.url}?fit=clip&w=600&q=60`
     : getdDefaultThumbnailByCategory(post.category.name)
@@ -40,7 +41,7 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
       ) : (
         <div className="w-full rounded-t-lg fallback-bg aspect-h-9 aspect-w-16" />
       )}
-      <div className="flex flex-col justify-between flex-grow p-4">
+      <div className="flex flex-col justify-between flex-grow gap-1 p-4">
         <div className="flex flex-col gap-2">
           <div className="flex items-center justify-between">
             <CategoryBadge category={post.category} />
@@ -56,7 +57,10 @@ export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogC
           </div>
           <p className="text-xl font-bold text-gray-800 line-clamp-2">{post.title}</p>
         </div>
-        <span className="text-gray-600">{publishedAt}</span>
+        <div className="text-gray-600">
+          <div>公開日：{publishedAt}</div>
+          <div>最終更新日：{updatedAt}</div>
+        </div>
       </div>
     </Card>
   )
