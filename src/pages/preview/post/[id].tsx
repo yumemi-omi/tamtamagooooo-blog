@@ -25,6 +25,7 @@ const PreviewPost: VFC<Props> = ({ post, highlightedBody }) => {
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
   )
+  const updatedAt = format(post.updatedAt ? new Date(post.updatedAt) : new Date(), 'yyyy/MM/dd')
   const thumbnail = post.thumbnail?.url
     ? `${post.thumbnail.url}?fit=clip&w=600`
     : getdDefaultThumbnailByCategory(post.category.name)
@@ -78,7 +79,10 @@ const PreviewPost: VFC<Props> = ({ post, highlightedBody }) => {
                   </div>
                 </div>
                 <p className="text-3xl font-bold text-gray-800">{post.title}</p>
-                <span className="text-gray-600">{publishedAt}</span>
+                <div className="text-gray-600">
+                  <div>{publishedAt}</div>
+                  <div>{updatedAt}</div>
+                </div>
               </div>
             </div>
             <Content html={highlightedBody} />
