@@ -9,7 +9,7 @@ export const Content: VFC<ContentProps> = ({ html }) => {
   return (
     <>
       <div
-        className="znc w-full"
+        className="w-full overflow-x-hidden znc"
         dangerouslySetInnerHTML={{
           __html: html,
         }}
