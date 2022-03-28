@@ -1,4 +1,4 @@
-import cheerio from 'cheerio'
+import { load } from 'cheerio'
 import hljs from 'highlight.js'
 import { Post } from '@/types/microCMS/api/Post'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
@@ -106,17 +106,20 @@ export const getServerSideProps: GetServerSideProps = async (
   const data = await fetchPostDetail(id, { draftKey })
 
   if (data.body) {
-    const $ = cheerio.load(data.body)
+    const $ = load(data.body)
 
+    // シンタックスハイライトのクラス
     $('pre code').each((_, elm) => {
       const result = hljs.highlightAuto($(elm).text())
       $(elm).html(result.value)
       $(elm).addClass('hljs')
     })
+    // 画像の縁をぼかすためのクラス
     $('img').each((_, elm) => {
       const wrapDiv = $('<div class="blur-image-wrap"></div>')
       $(elm).wrap(wrapDiv)
     })
+    // iframeのレスポンシブ対応
     $('iframe').each((_, elm) => {
       const wrapDiv = $(
         '<div class="iframe-wrapper" style="left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;"></div>',
@@ -126,6 +129,18 @@ export const getServerSideProps: GetServerSideProps = async (
         .attr('width', null)
         .attr('height', null)
         .attr('style', 'border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;')
+    })
+
+    // <h1>>内に「*」が3つ以上あれば、区切り線に変換
+    $('h1').each((_, elm) => {
+      if (elm && elm.children[0]) {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        const targetTxt = elm.children[0].data as string
+        if (targetTxt.match(/\*\*\*/)) {
+          $(elm).replaceWith(`<hr class="divider" />`)
+        }
+      }
     })
 
     return {
