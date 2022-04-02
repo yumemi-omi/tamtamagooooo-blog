@@ -1,10 +1,6 @@
 import { forwardRef } from 'react'
 
-type Props = {
-  children: React.ReactNode
-  href?: string
-  onClick?: (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => void
-}
+type Props = React.ComponentProps<'a'>
 
 export const AnchorWrapper = forwardRef<HTMLAnchorElement, Props>(function AnchorWithRef(
   { onClick, href, children },
