@@ -1,13 +1,13 @@
 import { forwardRef } from 'react'
 
-type Props = React.ComponentProps<'a'>
+type Props = React.ComponentPropsWithRef<'a'>
 
 export const AnchorWrapper = forwardRef<HTMLAnchorElement, Props>(function AnchorWithRef(
-  { onClick, href, children },
+  { children, ...rest },
   ref,
 ) {
   return (
-    <a href={href} onClick={onClick} ref={ref}>
+    <a {...rest} ref={ref}>
       {children}
     </a>
   )
