@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next'
+import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { fetchPost } from '@/features/post/api/fetchPost'
 import { Post } from '@/types/microCMS/api/Post'
 import { VFC } from 'react'
@@ -88,11 +88,31 @@ const DEFAULT_PAGINATION_META = {
   offset: 0,
 }
 
-export const getStaticProps: GetStaticProps = async () => {
+export const getStaticPaths = async (): Promise<{
+  paths: string[]
+  fallback: boolean
+}> => {
+  const data = await fetchPost({ limit: 0, offset: 0 })
+  const totalPageCount = Math.ceil(data.totalCount / DEFAULT_PAGINATION_META.limit)
+
+  if (totalPageCount <= 1) {
+    return { paths: [], fallback: false }
+  } else {
+    const paths = [...array.createNumberArray(totalPageCount)].map((num) => {
+      return `/page/${num}`
+    })
+
+    return { paths, fallback: false }
+  }
+}
+
+export const getStaticProps: GetStaticProps = async (context: GetStaticPropsContext) => {
+  const page = context.params ? Number(context.params.page) : 1
+
   const data = await fetchPost({
     orders: '-publishedAt',
-    limit: 10,
-    offset: 0,
+    limit: DEFAULT_PAGINATION_META.limit,
+    offset: (page - 1) * DEFAULT_PAGINATION_META.limit,
   })
   const categoryResponse = await fetchCategory()
   const tagResponse = await fetchTag()
@@ -107,7 +127,7 @@ export const getStaticProps: GetStaticProps = async () => {
       tags: tagResponse.contents,
       pageMeta: {
         pager,
-        currentPage: 1,
+        currentPage: page,
       },
     },
   }
