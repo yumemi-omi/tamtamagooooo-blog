@@ -1,4 +1,3 @@
-import { client } from '@/libs/microCmsClient'
 import { fetchPostDetail } from '@/features/post/api/fetchPostDetail'
 import { load } from 'cheerio'
 import hljs from 'highlight.js'
@@ -11,7 +10,6 @@ import { NarrowView } from '@/components/shared/NarrowView'
 import { Seo } from '@/components/shared/Seo'
 import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
-import { MicroCMSListValue } from '@/types/microCMS/Common'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
 import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
@@ -19,6 +17,8 @@ import { ShareButtonList } from '@/features/sns/components/ShareButtonList'
 // import { fetchPost } from '@/features/supabase/post/fetchPost'
 // import { nextApiClient } from '@/libs/apiClient'
 // import { useDebounce } from '@/shared/hooks/useDebounce'
+import { fetchPost } from '@/features/post/api/fetchPost'
+import array from '@/utils/array'
 
 type Props = {
   post: Post
@@ -122,18 +122,29 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
   )
 }
 
-// 静的生成のためのパスを指定します
+const DEFAULT_PAGINATION_META = {
+  limit: 10,
+  offset: 0,
+}
+
 export const getStaticPaths = async (): Promise<{
   paths: string[]
   fallback: boolean
 }> => {
-  const data: MicroCMSListValue<Post> = await client.get({ endpoint: 'post' })
+  const { totalCount } = await fetchPost({ limit: 0 })
+  const totalPageCount = Math.ceil(totalCount / DEFAULT_PAGINATION_META.limit)
 
-  const paths = data.contents.map((content) => `/post/${content.id}`)
+  const paths: string[] = []
+  for await (const page of array.createNumberArray(totalPageCount)) {
+    const offset = (page - 1) * DEFAULT_PAGINATION_META.limit
+    const { contents } = await fetchPost({ limit: DEFAULT_PAGINATION_META.limit, offset })
+    contents.forEach((post) => {
+      paths.push(`/post/${post.id}`)
+    })
+  }
   return { paths, fallback: false }
 }
 
-// データをテンプレートに受け渡す部分の処理を記述します
 export const getStaticProps = async (
   context: GetStaticPropsContext,
 ): Promise<{

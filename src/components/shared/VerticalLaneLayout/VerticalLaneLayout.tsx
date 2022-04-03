@@ -9,16 +9,20 @@ export const VerticalLaneLayout = ({ children }: Props) => {
 }
 
 const LeftSide: VFC<Props> = ({ children }) => {
-  return <aside className="flex-grow">{children}</aside>
+  return <aside className={`flex-grow ${!children && 'hidden'}`}>{children}</aside>
 }
 
 const Body: VFC<Props> = ({ children }) => {
-  return <div className="flex-grow">{children}</div>
+  return <div className={`flex-grow ${!children && 'hidden'}`}>{children}</div>
 }
 
 const RightSide: VFC<Props> = ({ children }) => {
   return (
-    <aside className="flex flex-col flex-grow gap-10 md:max-w-min lg:max-w-sm">{children}</aside>
+    <aside
+      className={`flex flex-col flex-grow gap-10 md:max-w-min lg:max-w-sm ${!children && 'hidden'}`}
+    >
+      {children}
+    </aside>
   )
 }
 
