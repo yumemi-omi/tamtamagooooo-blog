@@ -73,7 +73,7 @@ const Home: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta }) 
             </div>
           )}
         </VerticalLaneLayout.Body>
-        <VerticalLaneLayout.RightSide>
+        <VerticalLaneLayout.RightSide className="flex flex-col flex-grow gap-10 md:max-w-min lg:max-w-sm">
           <PostSearch />
           <CategoryTile categories={categories} />
           <TagTile tags={tags} />
