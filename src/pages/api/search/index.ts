@@ -10,6 +10,7 @@ const search = async (req: NextApiRequest, res: NextApiResponse) => {
   const data = await fetchPost({
     q: req.query.q,
     orders: '-publishedAt',
+    limit: 100,
   })
 
   res.status(200).json({ ...data })

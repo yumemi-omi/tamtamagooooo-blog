@@ -16,7 +16,7 @@ export const CategoryTile: VFC<Props> = ({ categories }) => {
       <ul className="flex flex-wrap gap-4 p-5">
         {categories.map((category) => (
           <li key={category.id} className="hover-zoom-in">
-            <Link href={`/category/${category.id}`} passHref>
+            <Link href={`/category/${category.id}/1`} passHref>
               <AnchorWrapper>
                 <CategoryBadge category={category} />
               </AnchorWrapper>
