@@ -13,16 +13,13 @@ import { fetchTag } from '@/features/tag/api/fetchTag'
 import { Tag } from '@/features/tag/types/Tag'
 import { TagTile } from '@/features/tag/components/TagTile'
 import array from '@/utils/array'
-import { Pagination } from '@/components/shared/Pagination'
+import { Pagination, PageMeta } from '@/components/shared/Pagination'
 
 type Props = {
   posts: Post[]
   categories: Category[]
   tags: Tag[]
-  pageMeta: {
-    pager: number[]
-    currentPage: number
-  }
+  pageMeta: PageMeta
 }
 
 const Home: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta }) => {

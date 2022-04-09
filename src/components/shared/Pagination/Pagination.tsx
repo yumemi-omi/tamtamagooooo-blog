@@ -1,11 +1,13 @@
 import Link from 'next/link'
 import { VFC } from 'react'
 
+export type PageMeta = {
+  pager: number[]
+  currentPage: number
+}
+
 type Props = {
-  pageMeta: {
-    pager: number[]
-    currentPage: number
-  }
+  pageMeta: PageMeta
 }
 
 export const Pagination: VFC<Props> = ({ pageMeta }) => {
