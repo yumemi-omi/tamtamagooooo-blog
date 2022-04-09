@@ -78,6 +78,7 @@ export const getStaticProps: GetStaticProps = async () => {
       pageMeta: {
         pager,
         currentPage: 1,
+        path: `/page`,
       },
     },
   }

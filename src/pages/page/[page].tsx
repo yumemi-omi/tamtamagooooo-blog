@@ -62,7 +62,7 @@ export const getStaticPaths = async (): Promise<{
   paths: string[]
   fallback: boolean
 }> => {
-  const data = await fetchPost({ limit: 0, offset: 0 })
+  const data = await fetchPost({ limit: 0 })
   const totalPageCount = Math.ceil(data.totalCount / DEFAULT_PAGINATION_META.limit)
 
   if (totalPageCount <= 1) {
@@ -98,6 +98,7 @@ export const getStaticProps: GetStaticProps = async (context: GetStaticPropsCont
       pageMeta: {
         pager,
         currentPage: page,
+        path: `/page`,
       },
     },
   }
