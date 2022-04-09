@@ -16,7 +16,7 @@ export const TagTile: VFC<Props> = ({ tags }) => {
       <ul className="flex flex-wrap gap-4 p-5">
         {tags.map((tag) => (
           <li key={tag.id} className="hover-zoom-in">
-            <Link href={`/tag/${tag.id}`} passHref>
+            <Link href={`/tag/${tag.id}/1`} passHref>
               <AnchorWrapper>
                 <TagBadge tag={tag} />
               </AnchorWrapper>

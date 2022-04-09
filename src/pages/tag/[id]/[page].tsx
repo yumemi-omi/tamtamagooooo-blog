@@ -1,9 +1,7 @@
-import { client } from '@/libs/microCmsClient'
 import { Post } from '@/types/microCMS/api/Post'
 import { GetStaticPropsContext } from 'next'
 import { VFC } from 'react'
 import { Seo } from '@/components/shared/Seo'
-import { MicroCMSListValue } from '@/types/microCMS/Common'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
 import { Category } from '@/types/microCMS/api/Category'
 import { fetchPost } from '@/features/post/api/fetchPost'
@@ -14,21 +12,30 @@ import { CategoryTile } from '@/features/category/components/CategoryTile'
 import { Tag } from '@/features/tag/types/Tag'
 import { fetchTag } from '@/features/tag/api/fetchTag'
 import { TagTile } from '@/features/tag/components/TagTile'
+import array from '@/utils/array'
+import { Pagination, PageMeta } from '@/components/shared/Pagination'
 
 type Props = {
   posts: Post[]
   categories: Category[]
   tags: Tag[]
+  pageMeta: PageMeta
 }
 
-const TagId: VFC<Props> = ({ posts = [], categories = [], tags = [] }) => {
+const TagId: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta }) => {
   return (
     <>
       <Seo path="/category" title="カテゴリ別" description="とりあえず書く、たまごであった" />
       <VerticalLaneLayout>
         <VerticalLaneLayout.Body>
           {posts.length !== 0 ? (
-            <Posts posts={posts} />
+            <div className="flex flex-col items-center justify-center">
+              <Pagination pageMeta={pageMeta} />
+              <div className="w-full my-8">
+                <Posts posts={posts} />
+              </div>
+              <Pagination pageMeta={pageMeta} />
+            </div>
           ) : (
             <div>
               {/* TODO: メッセージコンポーネント化 */}
@@ -46,13 +53,31 @@ const TagId: VFC<Props> = ({ posts = [], categories = [], tags = [] }) => {
   )
 }
 
+const DEFAULT_PAGINATION_META = {
+  limit: 10,
+  offset: 0,
+}
+
 export const getStaticPaths = async (): Promise<{
   paths: string[]
   fallback: boolean
 }> => {
-  const data: MicroCMSListValue<Tag> = await client.get({ endpoint: 'tag' })
+  const data = await fetchTag({ limit: 100 })
 
-  const paths = data.contents.map((content) => `/tag/${content.id}`)
+  const promiseList = data.contents.map(async (tag) => {
+    const postData = await fetchPost({
+      filters: `tags[contains]${tag.id}`,
+      limit: 0,
+    })
+    const totalCount = postData.totalCount
+    const totalPageCount = Math.ceil(totalCount / DEFAULT_PAGINATION_META.limit)
+
+    return [...array.createNumberArray(totalPageCount)].map((num) => {
+      return `/tag/${tag.id}/${num}`
+    })
+  })
+
+  const paths = (await Promise.all(promiseList)).flat()
   return { paths, fallback: false }
 }
 
@@ -62,17 +87,30 @@ export const getStaticProps = async (
   props: Props
 }> => {
   const id = context.params ? (context.params.id as string) : ''
+  const page = context.params ? Number(context.params.page) : 1
+
   const postResponse = await fetchPost({
     filters: `tags[contains]${id}`,
+    orders: '-publishedAt',
+    limit: DEFAULT_PAGINATION_META.limit,
+    offset: (page - 1) * DEFAULT_PAGINATION_META.limit,
   })
   const categoryResponse = await fetchCategory()
   const tagResponse = await fetchTag()
+
+  const totalPageCount = Math.ceil(postResponse.totalCount / DEFAULT_PAGINATION_META.limit)
+  const pager = [...array.createNumberArray(totalPageCount)]
 
   return {
     props: {
       posts: postResponse.contents,
       categories: categoryResponse.contents,
       tags: tagResponse.contents,
+      pageMeta: {
+        pager,
+        currentPage: page,
+        path: `/category/${id}`,
+      },
     },
   }
 }
