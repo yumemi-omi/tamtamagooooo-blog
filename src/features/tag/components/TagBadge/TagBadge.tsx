@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { Tag } from '@/features/tag/types/Tag'
+import { Tag } from '@/features/tag/types/tag'
 
 const TAG_BADGE_COLOR_SET = {
   gray: 'bg-gray-800',

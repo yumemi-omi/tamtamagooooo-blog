@@ -1,7 +1,7 @@
 import { fetchPostDetail } from '@/features/post/api/fetchPostDetail'
 import { load } from 'cheerio'
 import hljs from 'highlight.js'
-import { Post } from '@/types/microCMS/api/Post'
+import { Post } from '@/types/microCMS/api/post'
 import { GetStaticPropsContext } from 'next'
 import { VFC } from 'react'
 import { Content } from '@/components/screen/blog/Content'
@@ -19,14 +19,18 @@ import { ShareButtonList } from '@/features/sns/components/ShareButtonList'
 // import { useDebounce } from '@/shared/hooks/useDebounce'
 import { fetchPost } from '@/features/post/api/fetchPost'
 import array from '@/utils/array'
+import { fetchProfile } from '@/features/profile/api/fetchProfile'
+import { Profile } from '@/features/profile/types/profile'
+import { Card } from '@/components/shared/Card'
 
 type Props = {
   post: Post
   highlightedBody: string
+  profile: Profile
   // likePost: any[]
 }
 
-const PostId: VFC<Props> = ({ post, highlightedBody }) => {
+const PostId: VFC<Props> = ({ post, highlightedBody, profile }) => {
   // const debounce = useDebounce(1000)
   const publishedAt = format(
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
@@ -110,6 +114,31 @@ const PostId: VFC<Props> = ({ post, highlightedBody }) => {
               </div>
             </div>
             <Content html={highlightedBody} />
+            <Card className="p-5 mt-16">
+              <div className="flex items-center gap-4">
+                <div className="flex p-2 pt-6 rounded-full w-36 h-36 bg-tia-maria-100">
+                  <Image
+                    className="object-cover rounded-full w-36 h-36"
+                    src={profile.icon.url}
+                    width={200}
+                    height={200}
+                    alt="たまごのプロフィール画像"
+                  />
+                </div>
+                <div className="flex flex-col gap-2" style={{ wordBreak: 'keep-all' }}>
+                  <div className="text-lg font-bold text-gray-800">{profile.title}</div>
+                  <Content html={profile.body} />
+                  <a
+                    target="_blank"
+                    className="underline text-sky-400"
+                    href={profile.insta}
+                    rel="noreferrer"
+                  >
+                    Instaglam
+                  </a>
+                </div>
+              </div>
+            </Card>
           </NarrowView>
         </VerticalLaneLayout.Body>
         <VerticalLaneLayout.RightSide>
@@ -154,6 +183,8 @@ export const getStaticProps = async (
   // const response = await fetchPost(id)
   // const likePost = response.data || []
 
+  const profile = await fetchProfile()
+
   const data = await fetchPostDetail(id)
   if (data.body) {
     const $ = load(data.body)
@@ -197,6 +228,7 @@ export const getStaticProps = async (
       props: {
         post: data,
         highlightedBody: $.html(),
+        profile,
         // likePost,
       },
     }
@@ -205,6 +237,7 @@ export const getStaticProps = async (
       props: {
         post: data,
         highlightedBody: '',
+        profile,
         // likePost,
       },
     }

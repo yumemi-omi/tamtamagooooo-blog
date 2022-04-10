@@ -1,5 +1,5 @@
 import { Card } from '@/components/shared/Card'
-import { Tag } from '@/features/tag/types/Tag'
+import { Tag } from '@/features/tag/types/tag'
 import { VFC } from 'react'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { AnchorWrapper } from '@/components/shared/AnchorWrapper'

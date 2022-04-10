@@ -1,7 +1,7 @@
-import { Tag } from '@/features/tag/types/Tag'
-import { MicroCMSCaptionValue } from '@/types/microCMS/Common'
-import { MicroCMSReqHeaders } from '@/types/microCMS/Headers'
-import { MicroCMSGetQuery } from '@/types/microCMS/Query'
+import { Tag } from '@/features/tag/types/tag'
+import { MicroCMSCaptionValue } from '@/types/microCMS/common'
+import { MicroCMSReqHeaders } from '@/types/microCMS/headers'
+import { MicroCMSGetQuery } from '@/types/microCMS/query'
 
 export type Methods = {
   get: {

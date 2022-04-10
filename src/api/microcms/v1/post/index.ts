@@ -1,7 +1,7 @@
-import { Post } from '@/types/microCMS/api/Post'
-import { MicroCMSCaptionValue } from '@/types/microCMS/Common'
-import { MicroCMSReqHeaders } from '@/types/microCMS/Headers'
-import { MicroCMSGetQuery } from '@/types/microCMS/Query'
+import { Post } from '@/types/microCMS/api/post'
+import { MicroCMSCaptionValue } from '@/types/microCMS/common'
+import { MicroCMSReqHeaders } from '@/types/microCMS/headers'
+import { MicroCMSGetQuery } from '@/types/microCMS/query'
 
 export type Methods = {
   get: {
