@@ -1,4 +1,4 @@
-import { MicroCMSCommonValue } from '@/types/microCMS/Common'
+import { MicroCMSCommonValue } from '@/types/microCMS/common'
 
 export type Category = {
   name: string

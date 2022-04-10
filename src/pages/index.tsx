@@ -1,28 +1,32 @@
 import { GetStaticProps } from 'next'
 import { fetchPost } from '@/features/post/api/fetchPost'
-import { Post } from '@/types/microCMS/api/Post'
+import { Post } from '@/types/microCMS/api/post'
 import { VFC } from 'react'
 import { Seo } from '@/components/shared/Seo'
 import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
 import { PostSearch } from '@/features/search/components/PostSearch'
 import { Posts } from '@/components/screen/blog/Posts'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
-import { Category } from '@/types/microCMS/api/Category'
+import { Category } from '@/types/microCMS/api/category'
 import { CategoryTile } from '@/features/category/components/CategoryTile'
 import { fetchTag } from '@/features/tag/api/fetchTag'
-import { Tag } from '@/features/tag/types/Tag'
+import { Tag } from '@/features/tag/types/tag'
 import { TagTile } from '@/features/tag/components/TagTile'
 import array from '@/utils/array'
 import { Pagination, PageMeta } from '@/components/shared/Pagination'
+import { Profile } from '@/features/profile/types/profile'
+import { fetchProfile } from '@/features/profile/api/fetchProfile'
+import { ProfileTile } from '@/features/profile/components/ProfileTile'
 
 type Props = {
   posts: Post[]
   categories: Category[]
   tags: Tag[]
   pageMeta: PageMeta
+  profile: Profile
 }
 
-const Home: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta }) => {
+const Home: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta, profile }) => {
   return (
     <>
       <Seo path="/" title="投稿一覧" description="とりあえず書く、たまごであった" />
@@ -47,6 +51,7 @@ const Home: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta }) 
           <PostSearch />
           <CategoryTile categories={categories} />
           <TagTile tags={tags} />
+          <ProfileTile profile={profile} />
         </VerticalLaneLayout.RightSide>
       </VerticalLaneLayout>
     </>
@@ -66,6 +71,7 @@ export const getStaticProps: GetStaticProps = async () => {
   })
   const categoryResponse = await fetchCategory()
   const tagResponse = await fetchTag()
+  const profile = await fetchProfile()
 
   const totalPageCount = Math.ceil(data.totalCount / DEFAULT_PAGINATION_META.limit)
   const pager = [...array.createNumberArray(totalPageCount)]
@@ -80,6 +86,7 @@ export const getStaticProps: GetStaticProps = async () => {
         currentPage: 1,
         path: `/page`,
       },
+      profile,
     },
   }
 }

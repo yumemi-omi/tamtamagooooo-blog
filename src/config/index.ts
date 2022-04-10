@@ -1,9 +1,9 @@
-import { MicroCMSReqHeaders } from '@/types/microCMS/Headers'
+import { MicroCMSReqHeaders } from '@/types/microCMS/headers'
 
 export const headers: MicroCMSReqHeaders = {
   'X-API-KEY': process.env.MICRO_CMS_API_KEY_VER_1 ?? '',
 }
 
 export const headersVer2: MicroCMSReqHeaders = {
-  'X-API-KEY': process.env.MICRO_CMS_API_KEY_VER2 ?? '',
+  'X-MICROCMS-API-KEY': process.env.MICRO_CMS_API_KEY_VER_2 ?? '',
 }

@@ -1,6 +1,6 @@
 import { load } from 'cheerio'
 import hljs from 'highlight.js'
-import { Post } from '@/types/microCMS/api/Post'
+import { Post } from '@/types/microCMS/api/post'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
 import { VFC } from 'react'
 import { Content } from '@/components/screen/blog/Content'

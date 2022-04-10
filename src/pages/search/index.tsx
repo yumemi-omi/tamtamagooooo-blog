@@ -1,26 +1,30 @@
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
-import { Post } from '@/types/microCMS/api/Post'
+import { Post } from '@/types/microCMS/api/post'
 import { VFC } from 'react'
 import { Seo } from '@/components/shared/Seo'
 import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
 import { PostSearch } from '@/features/search/components/PostSearch'
 import { Posts } from '@/components/screen/blog/Posts'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
-import { Category } from '@/types/microCMS/api/Category'
+import { Category } from '@/types/microCMS/api/category'
 import { CategoryTile } from '@/features/category/components/CategoryTile'
 import { TagTile } from '@/features/tag/components/TagTile'
 import { fetchTag } from '@/features/tag/api/fetchTag'
-import { Tag } from '@/features/tag/types/Tag'
+import { Tag } from '@/features/tag/types/tag'
 import useSWR from 'swr'
 import { MicroCMSListResponse } from 'microcms-js-sdk'
+import { Profile } from '@/features/profile/types/profile'
+import { fetchProfile } from '@/features/profile/api/fetchProfile'
+import { ProfileTile } from '@/features/profile/components/ProfileTile'
 
 type Props = {
   categories: Category[]
   tags: Tag[]
+  profile: Profile
 }
 
-const Search: VFC<Props> = ({ categories = [], tags = [] }) => {
+const Search: VFC<Props> = ({ categories = [], tags = [], profile }) => {
   const router = useRouter()
   const { data, error } = useSWR<MicroCMSListResponse<Post>>(
     `/api/search?q=${router.query.q}`,
@@ -59,6 +63,7 @@ const Search: VFC<Props> = ({ categories = [], tags = [] }) => {
           <PostSearch />
           <CategoryTile categories={categories} />
           <TagTile tags={tags} />
+          <ProfileTile profile={profile} />
         </VerticalLaneLayout.RightSide>
       </VerticalLaneLayout>
     </>
@@ -68,11 +73,13 @@ const Search: VFC<Props> = ({ categories = [], tags = [] }) => {
 export const getStaticProps: GetStaticProps = async () => {
   const categoryResponse = await fetchCategory()
   const tagResponse = await fetchTag()
+  const profile = await fetchProfile()
 
   return {
     props: {
       categories: categoryResponse.contents,
       tags: tagResponse.contents,
+      profile,
     },
   }
 }

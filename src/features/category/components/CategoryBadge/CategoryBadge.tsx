@@ -1,5 +1,5 @@
 import { VFC } from 'react'
-import { Category } from '@/types/microCMS/api/Category'
+import { Category } from '@/types/microCMS/api/category'
 
 type Props = {
   category: Category
