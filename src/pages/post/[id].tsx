@@ -114,8 +114,8 @@ const PostId: VFC<Props> = ({ post, highlightedBody, profile }) => {
               </div>
             </div>
             <Content html={highlightedBody} />
-            <Card className="p-5 mt-16">
-              <div className="flex items-center gap-4">
+            <Card className="hidden p-5 mt-16 lg:block md:block">
+              <div className="flex flex-col items-center gap-4 lg:flex-row">
                 <div className="flex p-2 pt-6 rounded-full w-36 h-36 bg-tia-maria-100">
                   <Image
                     className="object-cover rounded-full w-36 h-36"
@@ -125,7 +125,7 @@ const PostId: VFC<Props> = ({ post, highlightedBody, profile }) => {
                     alt="たまごのプロフィール画像"
                   />
                 </div>
-                <div className="flex flex-col gap-2" style={{ wordBreak: 'keep-all' }}>
+                <div className="flex flex-col gap-2">
                   <div className="text-lg font-bold text-gray-800">{profile.title}</div>
                   <Content html={profile.body} />
                   <a
@@ -145,6 +145,31 @@ const PostId: VFC<Props> = ({ post, highlightedBody, profile }) => {
           <div className="w-full md:hidden lg:hidden">
             <ShareButtonList title={post.title} />
           </div>
+          <Card className="p-5 mt-16 lg:hidden md:hidden">
+            <div className="flex flex-col items-center gap-4 lg:flex-row">
+              <div className="flex p-2 pt-6 rounded-full w-36 h-36 bg-tia-maria-100">
+                <Image
+                  className="object-cover rounded-full w-36 h-36"
+                  src={profile.icon.url}
+                  width={200}
+                  height={200}
+                  alt="たまごのプロフィール画像"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="text-lg font-bold text-gray-800">{profile.title}</div>
+                <Content html={profile.body} />
+                <a
+                  target="_blank"
+                  className="underline text-sky-400"
+                  href={profile.insta}
+                  rel="noreferrer"
+                >
+                  Instaglam
+                </a>
+              </div>
+            </div>
+          </Card>
         </VerticalLaneLayout.RightSide>
       </VerticalLaneLayout>
     </>
