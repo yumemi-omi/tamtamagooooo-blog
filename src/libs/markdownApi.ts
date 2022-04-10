@@ -5,6 +5,7 @@ import matter from 'gray-matter'
 const postsDirectory = join(process.cwd(), 'src/markdown')
 
 const formatPost = (
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   data: { [key: string]: any },
   content: string,
   fields: string[] = [],

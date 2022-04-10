@@ -5,9 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build && next-sitemap",
+    "build:api": "aspida",
     "start": "next start",
-    "lint": "next lint",
-    "api:build": "aspida"
+    "lint": "next lint"
   },
   "dependencies": {
     "@aspida/axios": "1.9.1",
