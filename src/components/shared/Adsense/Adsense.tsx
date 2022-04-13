@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-export const Adsense: React.FC = () => {
+export const Adsense: React.VFC = () => {
   const { asPath } = useRouter()
   useEffect(() => {
     try {
@@ -10,6 +10,11 @@ export const Adsense: React.FC = () => {
       console.log(err)
     }
   }, [asPath])
+  console.log(asPath)
+
+  if (asPath === '/policy') {
+    return null
+  }
 
   return (
     <div className="w-full" key={asPath}>
