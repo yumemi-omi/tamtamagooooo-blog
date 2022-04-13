@@ -19,7 +19,7 @@ type Props = {
 export const TagBadge: VFC<Props> = ({ tag }) => {
   return (
     <span
-      className={`rounded-full text-white px-3 py-1 text-xs uppercase font-medium ${
+      className={`rounded-full text-white px-3 py-1 text-xs uppercase font-medium inline-block ${
         TAG_BADGE_COLOR_SET[tag.color]
       }`}
     >
