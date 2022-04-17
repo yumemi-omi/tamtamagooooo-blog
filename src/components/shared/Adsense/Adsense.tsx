@@ -10,7 +10,6 @@ export const Adsense: React.VFC = () => {
       console.log(err)
     }
   }, [asPath])
-  console.log(asPath)
 
   if (asPath === '/policy') {
     return null
