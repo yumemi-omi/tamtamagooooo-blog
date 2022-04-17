@@ -32,6 +32,14 @@ export const ProfileTile: VFC<Props> = ({ profile }) => {
           >
             Instaglam
           </a>
+          <a
+            target="_blank"
+            className="underline text-sky-400"
+            href={profile.youtube}
+            rel="noreferrer"
+          >
+            YouTube
+          </a>
         </div>
       </div>
     </Card>

@@ -6,4 +6,5 @@ export type Profile = {
   icon: Image
   body: RichEdit
   insta: TextField
+  youtube: TextField
 } & MicroCMSCommonValue
