@@ -3,7 +3,7 @@ import { Post } from '@/types/microCMS/api/post'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import { TagBadge } from '@/features/tag/components/TagBadge'
-import { Card } from '@/components/shared/Card'
+import { Card } from '@/shared/components/Card'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
 

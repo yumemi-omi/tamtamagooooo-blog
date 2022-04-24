@@ -1,8 +1,8 @@
-import { Card } from '@/components/shared/Card'
+import { Card } from '@/shared/components/Card'
 import { Tag } from '@/features/tag/types/tag'
 import { FC } from 'react'
 import { TagBadge } from '@/features/tag/components/TagBadge'
-import { AnchorWrapper } from '@/components/shared/AnchorWrapper'
+import { AnchorWrapper } from '@/shared/components/AnchorWrapper'
 import Link from 'next/link'
 
 type Props = {

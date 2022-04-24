@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import Link from 'next/link'
-import { Adsense } from '@/components/shared/Adsense'
+import { Adsense } from '@/shared/components/Adsense'
 
 export const MainFooter: FC = () => {
   return (

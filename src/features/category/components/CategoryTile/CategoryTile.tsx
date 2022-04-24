@@ -1,8 +1,8 @@
-import { Card } from '@/components/shared/Card'
+import { Card } from '@/shared/components/Card'
 import { Category } from '@/types/microCMS/api/category'
 import { FC } from 'react'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
-import { AnchorWrapper } from '@/components/shared/AnchorWrapper'
+import { AnchorWrapper } from '@/shared/components/AnchorWrapper'
 import Link from 'next/link'
 
 type Props = {
