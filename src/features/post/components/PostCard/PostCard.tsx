@@ -7,11 +7,11 @@ import { Card } from '@/components/shared/Card'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
 
-type BlogCardProps = {
+type PostCardProps = {
   post: Post
 }
 
-export const BlogCard = forwardRef<HTMLDivElement, BlogCardProps>(function BlogCardWithRef(
+export const PostCard = forwardRef<HTMLDivElement, PostCardProps>(function PostCardWithRef(
   props,
   ref,
 ) {

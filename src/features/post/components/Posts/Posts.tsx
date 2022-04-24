@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { Post } from '@/types/microCMS/api/post'
-import { BlogCard } from '@/components/screen/blog/BlogCard'
+import { PostCard } from '@/features/post/components/PostCard'
 import { FC } from 'react'
 
 type Props = {
@@ -14,7 +14,7 @@ export const Posts: FC<Props> = ({ posts }) => {
         <li key={blog.id} className="">
           <Link href={`/post/${blog.id}`} passHref>
             <a>
-              <BlogCard post={blog} />
+              <PostCard post={blog} />
             </a>
           </Link>
         </li>

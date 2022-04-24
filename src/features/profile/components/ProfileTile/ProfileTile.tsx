@@ -1,7 +1,7 @@
 import { Profile } from '@/features/profile/types/profile'
 import Image from 'next/image'
 import { Card } from '@/components/shared/Card'
-import { Content } from '@/components/screen/blog/Content'
+import { Content } from '@/features/post/components/Content'
 import { FC } from 'react'
 
 type Props = {
