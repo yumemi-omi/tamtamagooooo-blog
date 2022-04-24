@@ -1,5 +1,5 @@
 import NextHeadSeo from 'next-head-seo'
-import { VFC } from 'react'
+import { FC } from 'react'
 
 // types
 export type SeoProps = {
@@ -11,7 +11,7 @@ export type SeoProps = {
   noTitleTemplate?: boolean
 }
 
-export const Seo: VFC<SeoProps> = (props) => {
+export const Seo: FC<SeoProps> = (props) => {
   const {
     path,
     title = 'とりたま日記',

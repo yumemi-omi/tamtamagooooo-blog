@@ -1,9 +1,9 @@
 // type Props = {}
 
 import { useRouter } from 'next/dist/client/router'
-import React, { useState } from 'react'
+import { useState, FC } from 'react'
 
-export const PostSearch: React.VFC = () => {
+export const PostSearch: FC = () => {
   const router = useRouter()
   const [keyword, setKeyword] = useState<string>((router.query.q as string) || '')
 

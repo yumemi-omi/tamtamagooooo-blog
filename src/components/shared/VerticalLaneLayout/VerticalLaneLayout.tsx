@@ -1,4 +1,4 @@
-import { VFC, ReactNode } from 'react'
+import { FC, ReactNode } from 'react'
 
 type Props = {
   children: ReactNode
@@ -13,17 +13,17 @@ export const VerticalLaneLayout = ({ children, className }: Props) => {
   )
 }
 
-const LeftSide: VFC<Props> = ({ children, className }) => {
+const LeftSide: FC<Props> = ({ children, className }) => {
   return (
     <aside className={`flex-grow ${className || ''} ${!children && 'hidden'}`}>{children}</aside>
   )
 }
 
-const Body: VFC<Props> = ({ children, className }) => {
+const Body: FC<Props> = ({ children, className }) => {
   return <div className={`flex-grow ${className || ''} ${!children && 'hidden'}`}>{children}</div>
 }
 
-const RightSide: VFC<Props> = ({ children, className }) => {
+const RightSide: FC<Props> = ({ children, className }) => {
   return (
     <aside className={`flex-grow ${className || ''} ${!children && 'hidden'}`}>{children}</aside>
   )

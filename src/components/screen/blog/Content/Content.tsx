@@ -1,11 +1,11 @@
-import { VFC } from 'react'
+import { FC } from 'react'
 import 'zenn-content-css'
 
 type ContentProps = {
   html: string
 }
 
-export const Content: VFC<ContentProps> = ({ html }) => {
+export const Content: FC<ContentProps> = ({ html }) => {
   return (
     <>
       <div

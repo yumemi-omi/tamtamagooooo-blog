@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import { fetchPost } from '@/features/post/api/fetchPost'
 import { Post } from '@/types/microCMS/api/post'
-import { VFC } from 'react'
+import { FC } from 'react'
 import { Seo } from '@/components/shared/Seo'
 import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
 import { PostSearch } from '@/features/search/components/PostSearch'
@@ -26,7 +26,7 @@ type Props = {
   profile: Profile
 }
 
-const Home: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta, profile }) => {
+const Home: FC<Props> = ({ posts = [], categories = [], tags = [], pageMeta, profile }) => {
   return (
     <>
       <Seo path="/" title="投稿一覧" description="とりあえず書く、たまごであった" />

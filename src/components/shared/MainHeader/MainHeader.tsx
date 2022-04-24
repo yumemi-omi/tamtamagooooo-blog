@@ -1,7 +1,7 @@
-import { VFC } from 'react'
+import { FC } from 'react'
 import Link from 'next/link'
 
-export const MainHeader: VFC = () => {
+export const MainHeader: FC = () => {
   return (
     <header className="fixed top-0 z-20 flex items-center justify-center w-screen px-10 py-6 shadow-lg bg-magnolia">
       <Link href={`/`}>

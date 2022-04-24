@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 
-export const Adsense: React.VFC = () => {
+export const Adsense: React.FC = () => {
   const { asPath } = useRouter()
   useEffect(() => {
     try {

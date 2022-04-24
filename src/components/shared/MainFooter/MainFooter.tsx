@@ -1,8 +1,8 @@
-import { VFC } from 'react'
+import { FC } from 'react'
 import Link from 'next/link'
 import { Adsense } from '@/components/shared/Adsense'
 
-export const MainFooter: VFC = () => {
+export const MainFooter: FC = () => {
   return (
     <footer className="flex flex-col items-center justify-center gap-2 px-10 py-6">
       <Adsense />

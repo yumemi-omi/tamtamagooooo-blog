@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { Post } from '@/types/microCMS/api/post'
 import { BlogCard } from '@/components/screen/blog/BlogCard'
-import { VFC } from 'react'
+import { FC } from 'react'
 
 type Props = {
   posts: Post[]
 }
 
-export const Posts: VFC<Props> = ({ posts }) => {
+export const Posts: FC<Props> = ({ posts }) => {
   return (
     <ul className="grid grid-cols-1 gap-x-4 gap-y-6 lg:grid-cols-2 xl:gap-8">
       {posts.map((blog) => (

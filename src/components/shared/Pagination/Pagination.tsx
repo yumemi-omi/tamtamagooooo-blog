@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { VFC } from 'react'
+import { FC } from 'react'
 
 export type PageMeta = {
   pager: number[]
@@ -11,7 +11,7 @@ type Props = {
   pageMeta: PageMeta
 }
 
-export const Pagination: VFC<Props> = ({ pageMeta }) => {
+export const Pagination: FC<Props> = ({ pageMeta }) => {
   return (
     <div className="flex items-center space-x-1">
       {pageMeta.currentPage !== 1 && (

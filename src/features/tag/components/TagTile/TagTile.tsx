@@ -1,6 +1,6 @@
 import { Card } from '@/components/shared/Card'
 import { Tag } from '@/features/tag/types/tag'
-import { VFC } from 'react'
+import { FC } from 'react'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { AnchorWrapper } from '@/components/shared/AnchorWrapper'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ type Props = {
   tags: Tag[]
 }
 
-export const TagTile: VFC<Props> = ({ tags }) => {
+export const TagTile: FC<Props> = ({ tags }) => {
   return (
     <Card className="p-5">
       <h2 className="font-bold text-gray-600">タグ</h2>

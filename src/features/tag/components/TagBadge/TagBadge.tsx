@@ -1,4 +1,4 @@
-import { VFC } from 'react'
+import { FC } from 'react'
 import { Tag } from '@/features/tag/types/tag'
 
 const TAG_BADGE_COLOR_SET = {
@@ -16,7 +16,7 @@ type Props = {
   tag: Tag
 }
 
-export const TagBadge: VFC<Props> = ({ tag }) => {
+export const TagBadge: FC<Props> = ({ tag }) => {
   return (
     <span
       className={`rounded-full text-white px-3 py-1 text-xs uppercase font-medium inline-block ${

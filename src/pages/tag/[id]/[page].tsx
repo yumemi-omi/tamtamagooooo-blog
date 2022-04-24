@@ -1,6 +1,6 @@
 import { Post } from '@/types/microCMS/api/post'
 import { GetStaticPropsContext } from 'next'
-import { VFC } from 'react'
+import { FC } from 'react'
 import { Seo } from '@/components/shared/Seo'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
 import { Category } from '@/types/microCMS/api/category'
@@ -26,7 +26,7 @@ type Props = {
   profile: Profile
 }
 
-const TagId: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta, profile }) => {
+const TagId: FC<Props> = ({ posts = [], categories = [], tags = [], pageMeta, profile }) => {
   return (
     <>
       <Seo path="/category" title="カテゴリ別" description="とりあえず書く、たまごであった" />

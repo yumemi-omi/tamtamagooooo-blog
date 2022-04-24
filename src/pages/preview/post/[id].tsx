@@ -2,7 +2,7 @@ import { load } from 'cheerio'
 import hljs from 'highlight.js'
 import { Post } from '@/types/microCMS/api/post'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
-import { VFC } from 'react'
+import { FC } from 'react'
 import { Content } from '@/components/screen/blog/Content'
 import { format } from 'date-fns'
 import { NarrowView } from '@/components/shared/NarrowView'
@@ -20,7 +20,7 @@ type Props = {
   highlightedBody: string
 }
 
-const PreviewPost: VFC<Props> = ({ post, highlightedBody }) => {
+const PreviewPost: FC<Props> = ({ post, highlightedBody }) => {
   const publishedAt = format(
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',

@@ -1,6 +1,6 @@
 import { Card } from '@/components/shared/Card'
 import { Category } from '@/types/microCMS/api/category'
-import { VFC } from 'react'
+import { FC } from 'react'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { AnchorWrapper } from '@/components/shared/AnchorWrapper'
 import Link from 'next/link'
@@ -9,7 +9,7 @@ type Props = {
   categories: Category[]
 }
 
-export const CategoryTile: VFC<Props> = ({ categories }) => {
+export const CategoryTile: FC<Props> = ({ categories }) => {
   return (
     <Card className="p-5">
       <h2 className="font-bold text-gray-600">カテゴリー</h2>

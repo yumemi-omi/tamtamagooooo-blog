@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 
-export const FloatEggOnRice: React.VFC = () => {
+export const FloatEggOnRice: React.FC = () => {
   return (
     <div className="fixed egg-on-rice-image">
       <Link href="/" passHref>

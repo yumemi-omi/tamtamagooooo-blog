@@ -3,7 +3,7 @@ import { load } from 'cheerio'
 import hljs from 'highlight.js'
 import { Post } from '@/types/microCMS/api/post'
 import { GetStaticPropsContext } from 'next'
-import { VFC } from 'react'
+import { FC } from 'react'
 import { Content } from '@/components/screen/blog/Content'
 import { format } from 'date-fns'
 import { NarrowView } from '@/components/shared/NarrowView'
@@ -30,7 +30,7 @@ type Props = {
   // likePost: any[]
 }
 
-const PostId: VFC<Props> = ({ post, highlightedBody, profile }) => {
+const PostId: FC<Props> = ({ post, highlightedBody, profile }) => {
   // const debounce = useDebounce(1000)
   const publishedAt = format(
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
