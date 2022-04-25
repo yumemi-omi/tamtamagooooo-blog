@@ -5,18 +5,13 @@ import { Seo } from '@/shared/components/Seo'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
 import { Category } from '@/types/microCMS/api/category'
 import { fetchPost } from '@/features/post/api/fetchPost'
-import { VerticalLaneLayout } from '@/shared/components/VerticalLaneLayout'
-import { PostSearch } from '@/features/search/components/PostSearch'
-import { Posts } from '@/features/post/components/Posts'
-import { CategoryTile } from '@/features/category/components/CategoryTile'
-import { TagTile } from '@/features/tag/components/TagTile'
 import { fetchTag } from '@/features/tag/api/fetchTag'
 import { Tag } from '@/features/tag/types/tag'
 import array from '@/utils/array'
-import { Pagination, PageMeta } from '@/shared/components/Pagination'
+import { PageMeta } from '@/shared/components/Pagination'
 import { Profile } from '@/features/profile/types/profile'
 import { fetchProfile } from '@/features/profile/api/fetchProfile'
-import { ProfileTile } from '@/features/profile/components/ProfileTile'
+import { PostPageView } from '@/features/post/components/PostPageView'
 
 type Props = {
   posts: Post[]
@@ -26,34 +21,11 @@ type Props = {
   profile: Profile
 }
 
-const CategoryId: FC<Props> = ({ posts = [], categories = [], tags = [], pageMeta, profile }) => {
+const CategoryId: FC<Props> = (props) => {
   return (
     <>
       <Seo path="/category" title="カテゴリ別" description="とりあえず書く、たまごであった" />
-      <VerticalLaneLayout>
-        <VerticalLaneLayout.Body>
-          {posts.length !== 0 ? (
-            <div className="flex flex-col items-center justify-center">
-              <Pagination pageMeta={pageMeta} />
-              <div className="w-full my-8">
-                <Posts posts={posts} />
-              </div>
-              <Pagination pageMeta={pageMeta} />
-            </div>
-          ) : (
-            <div>
-              {/* TODO: メッセージコンポーネント化 */}
-              投稿は、まだありません。楽しみにしててね！
-            </div>
-          )}
-        </VerticalLaneLayout.Body>
-        <VerticalLaneLayout.RightSide className="flex flex-col flex-grow gap-10 md:max-w-min lg:max-w-sm">
-          <PostSearch />
-          <CategoryTile categories={categories} />
-          <TagTile tags={tags} />
-          <ProfileTile profile={profile} />
-        </VerticalLaneLayout.RightSide>
-      </VerticalLaneLayout>
+      <PostPageView {...props} />
     </>
   )
 }
