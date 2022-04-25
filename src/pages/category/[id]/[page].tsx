@@ -11,7 +11,7 @@ import array from '@/utils/array'
 import { PageMeta } from '@/shared/components/Pagination'
 import { Profile } from '@/features/profile/types/profile'
 import { fetchProfile } from '@/features/profile/api/fetchProfile'
-import { PostPageView } from '@/features/post/components/PostPageView'
+import { PostListPageView } from '@/features/post/components/PostListPageView'
 
 type Props = {
   posts: Post[]
@@ -25,7 +25,7 @@ const CategoryId: FC<Props> = (props) => {
   return (
     <>
       <Seo path="/category" title="カテゴリ別" description="とりあえず書く、たまごであった" />
-      <PostPageView {...props} />
+      <PostListPageView {...props} />
     </>
   )
 }
