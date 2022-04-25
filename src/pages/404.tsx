@@ -1,4 +1,4 @@
-import { Seo } from '@/components/shared/Seo'
+import { Seo } from '@/shared/components/Seo'
 
 export default function Custom404() {
   return (

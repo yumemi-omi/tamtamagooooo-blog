@@ -2,16 +2,16 @@ import { load } from 'cheerio'
 import hljs from 'highlight.js'
 import { Post } from '@/types/microCMS/api/post'
 import { GetServerSideProps, GetServerSidePropsContext } from 'next'
-import { VFC } from 'react'
-import { Content } from '@/components/screen/blog/Content'
+import { FC } from 'react'
+import { Content } from '@/features/post/components/Content'
 import { format } from 'date-fns'
-import { NarrowView } from '@/components/shared/NarrowView'
-import { Seo } from '@/components/shared/Seo'
+import { NarrowView } from '@/shared/components/NarrowView'
+import { Seo } from '@/shared/components/Seo'
 import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { fetchPostDetail } from '@/features/post/api/fetchPostDetail'
 import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
-import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
+import { VerticalLaneLayout } from '@/shared/components/VerticalLaneLayout'
 import { ShareButtonList } from '@/features/sns/components/ShareButtonList'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 
@@ -20,7 +20,7 @@ type Props = {
   highlightedBody: string
 }
 
-const PreviewPost: VFC<Props> = ({ post, highlightedBody }) => {
+const PreviewPost: FC<Props> = ({ post, highlightedBody }) => {
   const publishedAt = format(
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',

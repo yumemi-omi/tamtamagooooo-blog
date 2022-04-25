@@ -1,11 +1,11 @@
 import { GetStaticProps } from 'next'
 import { useRouter } from 'next/router'
 import { Post } from '@/types/microCMS/api/post'
-import { VFC } from 'react'
-import { Seo } from '@/components/shared/Seo'
-import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
+import { FC } from 'react'
+import { Seo } from '@/shared/components/Seo'
+import { VerticalLaneLayout } from '@/shared/components/VerticalLaneLayout'
 import { PostSearch } from '@/features/search/components/PostSearch'
-import { Posts } from '@/components/screen/blog/Posts'
+import { Posts } from '@/features/post/components/Posts'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
 import { Category } from '@/types/microCMS/api/category'
 import { CategoryTile } from '@/features/category/components/CategoryTile'
@@ -24,7 +24,7 @@ type Props = {
   profile: Profile
 }
 
-const Search: VFC<Props> = ({ categories = [], tags = [], profile }) => {
+const Search: FC<Props> = ({ categories = [], tags = [], profile }) => {
   const router = useRouter()
   const { data, error } = useSWR<MicroCMSListResponse<Post>>(
     `/api/search?q=${router.query.q}`,

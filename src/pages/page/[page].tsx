@@ -1,22 +1,17 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next'
 import { fetchPost } from '@/features/post/api/fetchPost'
 import { Post } from '@/types/microCMS/api/post'
-import { VFC } from 'react'
-import { Seo } from '@/components/shared/Seo'
-import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
-import { PostSearch } from '@/features/search/components/PostSearch'
-import { Posts } from '@/components/screen/blog/Posts'
+import { FC } from 'react'
+import { Seo } from '@/shared/components/Seo'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
 import { Category } from '@/types/microCMS/api/category'
-import { CategoryTile } from '@/features/category/components/CategoryTile'
 import { fetchTag } from '@/features/tag/api/fetchTag'
 import { Tag } from '@/features/tag/types/tag'
-import { TagTile } from '@/features/tag/components/TagTile'
 import array from '@/utils/array'
-import { Pagination, PageMeta } from '@/components/shared/Pagination'
+import { PageMeta } from '@/shared/components/Pagination'
 import { Profile } from '@/features/profile/types/profile'
 import { fetchProfile } from '@/features/profile/api/fetchProfile'
-import { ProfileTile } from '@/features/profile/components/ProfileTile'
+import { PostPageView } from '@/features/post/components/PostPageView'
 
 type Props = {
   posts: Post[]
@@ -26,34 +21,11 @@ type Props = {
   profile: Profile
 }
 
-const Home: VFC<Props> = ({ posts = [], categories = [], tags = [], pageMeta, profile }) => {
+const Home: FC<Props> = (props) => {
   return (
     <>
       <Seo path="/" title="投稿一覧" description="とりあえず書く、たまごであった" />
-      <VerticalLaneLayout>
-        <VerticalLaneLayout.Body>
-          {posts.length !== 0 ? (
-            <div className="flex flex-col items-center justify-center">
-              <Pagination pageMeta={pageMeta} />
-              <div className="w-full my-8">
-                <Posts posts={posts} />
-              </div>
-              <Pagination pageMeta={pageMeta} />
-            </div>
-          ) : (
-            <div>
-              {/* TODO: メッセージコンポーネント化 */}
-              投稿は、まだありません。楽しみにしててね！
-            </div>
-          )}
-        </VerticalLaneLayout.Body>
-        <VerticalLaneLayout.RightSide className="flex flex-col flex-grow gap-10 md:max-w-min lg:max-w-sm">
-          <PostSearch />
-          <CategoryTile categories={categories} />
-          <TagTile tags={tags} />
-          <ProfileTile profile={profile} />
-        </VerticalLaneLayout.RightSide>
-      </VerticalLaneLayout>
+      <PostPageView {...props} />
     </>
   )
 }

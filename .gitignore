@@ -32,3 +32,7 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+# local files related seo
+robots.txt
+*.xml

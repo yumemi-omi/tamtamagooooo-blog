@@ -1,14 +1,14 @@
 import { Profile } from '@/features/profile/types/profile'
 import Image from 'next/image'
-import { Card } from '@/components/shared/Card'
-import { Content } from '@/components/screen/blog/Content'
-import { VFC } from 'react'
+import { Card } from '@/shared/components/Card'
+import { Content } from '@/features/post/components/Content'
+import { FC } from 'react'
 
 type Props = {
   profile: Profile
 }
 
-export const ProfileTile: VFC<Props> = ({ profile }) => {
+export const ProfileTile: FC<Props> = ({ profile }) => {
   return (
     <Card className="p-5">
       <div className="flex flex-col items-center gap-4">

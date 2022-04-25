@@ -4,7 +4,7 @@ type Props = {
   title?: string
 }
 
-export const ShareButtonList: React.VFC<Props> = ({ title }) => {
+export const ShareButtonList: React.FC<Props> = ({ title }) => {
   return (
     <div className="flex flex-row flex-wrap items-center justify-center gap-4 md:flex-col lg:flex-col">
       <ShareButton title={title} round snsType="twitter" />

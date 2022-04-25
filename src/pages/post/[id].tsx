@@ -3,16 +3,16 @@ import { load } from 'cheerio'
 import hljs from 'highlight.js'
 import { Post } from '@/types/microCMS/api/post'
 import { GetStaticPropsContext } from 'next'
-import { VFC } from 'react'
-import { Content } from '@/components/screen/blog/Content'
+import { FC } from 'react'
+import { Content } from '@/features/post/components/Content'
 import { format } from 'date-fns'
-import { NarrowView } from '@/components/shared/NarrowView'
-import { Seo } from '@/components/shared/Seo'
+import { NarrowView } from '@/shared/components/NarrowView'
+import { Seo } from '@/shared/components/Seo'
 import Image from 'next/image'
 import { TagBadge } from '@/features/tag/components/TagBadge'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
-import { VerticalLaneLayout } from '@/components/shared/VerticalLaneLayout'
+import { VerticalLaneLayout } from '@/shared/components/VerticalLaneLayout'
 import { ShareButtonList } from '@/features/sns/components/ShareButtonList'
 // import { fetchPost } from '@/features/supabase/post/fetchPost'
 // import { nextApiClient } from '@/libs/apiClient'
@@ -21,7 +21,7 @@ import { fetchPost } from '@/features/post/api/fetchPost'
 import array from '@/utils/array'
 import { fetchProfile } from '@/features/profile/api/fetchProfile'
 import { Profile } from '@/features/profile/types/profile'
-import { Card } from '@/components/shared/Card'
+import { Card } from '@/shared/components/Card'
 
 type Props = {
   post: Post
@@ -30,7 +30,7 @@ type Props = {
   // likePost: any[]
 }
 
-const PostId: VFC<Props> = ({ post, highlightedBody, profile }) => {
+const PostId: FC<Props> = ({ post, highlightedBody, profile }) => {
   // const debounce = useDebounce(1000)
   const publishedAt = format(
     post.publishedAt ? new Date(post.publishedAt) : new Date(),

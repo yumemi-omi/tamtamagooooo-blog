@@ -1,16 +1,16 @@
 import { GetStaticProps } from 'next'
-import { VFC } from 'react'
-import { Seo } from '@/components/shared/Seo'
-import { NarrowView } from '@/components/shared/NarrowView'
+import { FC } from 'react'
+import { Seo } from '@/shared/components/Seo'
+import { NarrowView } from '@/shared/components/NarrowView'
 import { getPostByFilename } from '@/libs/markdownApi'
 import markdownToHtml from '@/libs/markdownToHtml'
-import { Content } from '@/components/screen/blog/Content'
+import { Content } from '@/features/post/components/Content'
 
 type Props = {
   policy: { [key: string]: string }
 }
 
-const Policy: VFC<Props> = ({ policy }) => {
+const Policy: FC<Props> = ({ policy }) => {
   return (
     <>
       <Seo path="/policy" title="プライバシーポリシー" />
