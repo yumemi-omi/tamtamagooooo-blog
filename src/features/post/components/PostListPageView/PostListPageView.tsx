@@ -19,7 +19,7 @@ type Props = {
   profile: Profile
 }
 
-export const PostPageView: FC<Props> = ({
+export const PostListPageView: FC<Props> = ({
   posts = [],
   categories = [],
   tags = [],

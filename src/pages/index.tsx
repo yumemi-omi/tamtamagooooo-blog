@@ -11,7 +11,7 @@ import array from '@/utils/array'
 import { PageMeta } from '@/shared/components/Pagination'
 import { Profile } from '@/features/profile/types/profile'
 import { fetchProfile } from '@/features/profile/api/fetchProfile'
-import { PostPageView } from '@/features/post/components/PostPageView'
+import { PostListPageView } from '@/features/post/components/PostListPageView'
 
 type Props = {
   posts: Post[]
@@ -25,7 +25,7 @@ const Home: FC<Props> = (props) => {
   return (
     <>
       <Seo path="/" title="投稿一覧" description="とりあえず書く、たまごであった" />
-      <PostPageView {...props} />
+      <PostListPageView {...props} />
     </>
   )
 }
