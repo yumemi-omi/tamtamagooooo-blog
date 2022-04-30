@@ -20,28 +20,27 @@ npm run build
 ## Directory
 ```
 src
-├── aspida
+├── aspida aspidaで使用するAPIリクエストを表現する型を含むフォルダ
 │   ├── microcms
 │   └── next
-├── assets
-├── config
-├── features
-│    └── profile
-│        ├── api
+├── config 設定ファイル
+├── features 機能群
+│    └── profile 機能名
+│        ├── api APIリクエスト用関数
 │        ├── components
 │        │   └── ProfileTile
 │        └── types
-├── libs
-├── markdown
+├── libs ライブラリラッパー群
+├── markdown マークダウンファイル群
 ├── pages
-├── shared
+├── shared 共有ファイル群
 │   ├── components
 │   ├── hooks
 │   ├── types
-│   │   └── microCMS
+│   │   └── microCMS microCMS用の型
 │   │       └── api
 │   └── utils
-└── styles
+└── styles グローバルスタイル
 ```
 
 ## Stack
