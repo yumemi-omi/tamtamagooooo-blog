@@ -10,7 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@aspida/axios": "1.9.1",
+    "@aspida/axios": "1.10.1",
     "@supabase/supabase-js": "1.33.3",
     "@tailwindcss/aspect-ratio": "0.4.0",
     "@tailwindcss/line-clamp": "0.3.1",
