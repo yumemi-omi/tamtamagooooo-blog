@@ -1,5 +1,5 @@
 import { forwardRef } from 'react'
-import { Post } from '@/types/microCMS/api/post'
+import { Post } from '@/shared/types/microCMS/api/post'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import { TagBadge } from '@/features/tag/components/TagBadge'

@@ -1,5 +1,5 @@
-import { MicroCMSCommonValue } from '@/types/microCMS/common'
-import { TextField, Image, RichEdit } from '@/types/microCMS/schema'
+import { MicroCMSCommonValue } from '@/shared/types/microCMS/common'
+import { TextField, Image, RichEdit } from '@/shared/types/microCMS/schema'
 
 export type Profile = {
   title: TextField
