@@ -13,7 +13,7 @@
     "@aspida/axios": "1.9.1",
     "@supabase/supabase-js": "1.33.3",
     "@tailwindcss/aspect-ratio": "0.4.0",
-    "@tailwindcss/line-clamp": "0.3.1",
+    "@tailwindcss/line-clamp": "0.4.0",
     "axios": "0.26.1",
     "cheerio": "1.0.0-rc.10",
     "date-fns": "2.28.0",
