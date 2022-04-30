@@ -1,5 +1,5 @@
-import { TextField, RichEdit, Image, TextArea } from '@/types/microCMS/schema'
-import { MicroCMSCommonValue } from '@/types/microCMS/common'
+import { TextField, RichEdit, Image, TextArea } from '@/shared/types/microCMS/schema'
+import { MicroCMSCommonValue } from '@/shared/types/microCMS/common'
 import { Category } from './category'
 import { Tag } from '@/features/tag/types/tag'
 

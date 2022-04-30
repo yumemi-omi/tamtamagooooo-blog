@@ -1,8 +1,8 @@
 import axios from 'axios'
 import aspida from '@aspida/axios'
-import microcmsApi from '@/api/microcms/v1/$api'
-import microcmsApiVer2 from '@/api/microcms/v2/$api'
-import nextApi from '@/api/next/$api'
+import microcmsApi from '@/aspida/microcms/v1/$api'
+import microcmsApiVer2 from '@/aspida/microcms/v2/$api'
+import nextApi from '@/aspida/next/$api'
 
 const microcmsAxiosConfigVer1 = {
   timeout: 3000,

@@ -1,5 +1,5 @@
 import { Card } from '@/shared/components/Card'
-import { Category } from '@/types/microCMS/api/category'
+import { Category } from '@/shared/types/microCMS/api/category'
 import { FC } from 'react'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { AnchorWrapper } from '@/shared/components/AnchorWrapper'

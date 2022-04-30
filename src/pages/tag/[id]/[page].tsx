@@ -1,13 +1,13 @@
-import { Post } from '@/types/microCMS/api/post'
+import { Post } from '@/shared/types/microCMS/api/post'
 import { GetStaticPropsContext } from 'next'
 import { FC } from 'react'
 import { Seo } from '@/shared/components/Seo'
 import { fetchCategory } from '@/features/category/api/fetchCategory'
-import { Category } from '@/types/microCMS/api/category'
+import { Category } from '@/shared/types/microCMS/api/category'
 import { fetchPost } from '@/features/post/api/fetchPost'
 import { Tag } from '@/features/tag/types/tag'
 import { fetchTag } from '@/features/tag/api/fetchTag'
-import array from '@/utils/array'
+import array from '@/shared/utils/array'
 import { PageMeta } from '@/shared/components/Pagination'
 import { Profile } from '@/features/profile/types/profile'
 import { fetchProfile } from '@/features/profile/api/fetchProfile'
@@ -87,7 +87,7 @@ export const getStaticProps = async (
       pageMeta: {
         pager,
         currentPage: page,
-        path: `/category/${id}`,
+        path: `/tag/${id}`,
       },
       profile,
     },

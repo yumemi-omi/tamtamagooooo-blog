@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { Post } from '@/types/microCMS/api/post'
+import { Post } from '@/shared/types/microCMS/api/post'
 import { PostCard } from '@/features/post/components/PostCard'
 import { FC } from 'react'
 
