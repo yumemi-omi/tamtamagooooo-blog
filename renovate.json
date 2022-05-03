@@ -8,5 +8,8 @@
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     }
-  ]
+  ],
+  "minor": {
+    "groupName": "all dependencies"
+  }
 }
