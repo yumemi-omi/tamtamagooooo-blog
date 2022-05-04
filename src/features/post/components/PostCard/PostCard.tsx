@@ -55,7 +55,7 @@ export const PostCard = forwardRef<HTMLDivElement, PostCardProps>(function PostC
               </ul>
             )}
           </div>
-          <p className="text-xl font-bold text-gray-800 line-clamp-2">{post.title}</p>
+          <h2 className="text-xl font-bold text-gray-800 line-clamp-2">{post.title}</h2>
         </div>
         <div className="text-gray-600">
           <div>公開日：{publishedAt}</div>
