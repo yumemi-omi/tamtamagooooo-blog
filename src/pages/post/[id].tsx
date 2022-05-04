@@ -106,7 +106,7 @@ const PostId: FC<Props> = ({ post, highlightedBody, profile }) => {
                     )}
                   </div>
                 </div>
-                <p className="text-3xl font-bold text-gray-800">{post.title}</p>
+                <h1 className="text-3xl font-bold text-gray-800">{post.title}</h1>
                 <div className="text-gray-600">
                   <div>公開日：{publishedAt}</div>
                   <div>最終更新日：{updatedAt}</div>
