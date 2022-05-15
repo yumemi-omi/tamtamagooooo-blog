@@ -13,7 +13,7 @@ export const MainFooter: FC = () => {
         「粗ドット絵」は
         <a
           target="_blank"
-          className="underline text-sky-400"
+          className="underline text-sky-600"
           href="https://dotown.maeda-design-room.net/"
           rel="noreferrer"
         >
@@ -21,7 +21,7 @@ export const MainFooter: FC = () => {
         </a>
         の
         <a
-          className="underline text-sky-400"
+          className="underline text-sky-600"
           target="_blank"
           href="https://dotown.maeda-design-room.net/term-of-use/"
           rel="noreferrer"
@@ -29,6 +29,17 @@ export const MainFooter: FC = () => {
           利用規約
         </a>
         に従って使用しております。
+      </p>
+      <p className="text-sm">
+        お問い合わせは
+        <a
+          className="underline text-sky-600"
+          target="_blank"
+          href="https://forms.gle/ZVaX97a93dREN7fP8"
+          rel="noreferrer"
+        >
+          こちら
+        </a>
       </p>
       <div className="z-10 flex flex-wrap items-center justify-center">
         <span>© 2022 とりたま日記.</span>
