@@ -14,13 +14,17 @@ import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
 import { VerticalLaneLayout } from '@/shared/components/VerticalLaneLayout'
 import { ShareButtonList } from '@/features/sns/components/ShareButtonList'
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
+import { fetchProfile } from '@/features/profile/api/fetchProfile'
+import { Profile } from '@/features/profile/types/profile'
+import { Card } from '@/shared/components/Card'
 
 type Props = {
   post: Post
   highlightedBody: string
+  profile: Profile
 }
 
-const PreviewPost: FC<Props> = ({ post, highlightedBody }) => {
+const PreviewPost: FC<Props> = ({ post, highlightedBody, profile }) => {
   const publishedAt = format(
     post.publishedAt ? new Date(post.publishedAt) : new Date(),
     'yyyy/MM/dd',
@@ -80,18 +84,84 @@ const PreviewPost: FC<Props> = ({ post, highlightedBody }) => {
                 </div>
                 <p className="text-3xl font-bold text-gray-800">{post.title}</p>
                 <div className="text-gray-600">
-                  <div>{publishedAt}</div>
-                  <div>{updatedAt}</div>
+                  <div>公開日：{publishedAt}</div>
+                  <div>最終更新日：{updatedAt}</div>
                 </div>
               </div>
             </div>
             <Content html={highlightedBody} />
+            <Card className="hidden p-5 mt-16 lg:block md:block">
+              <div className="flex flex-col items-center gap-4 lg:flex-row">
+                <div className="flex p-2 pt-6 rounded-full w-36 h-36 bg-tia-maria-100">
+                  <Image
+                    className="object-cover rounded-full w-36 h-36"
+                    src={profile.icon.url}
+                    width={200}
+                    height={200}
+                    alt="たまごのプロフィール画像"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <div className="text-lg font-bold text-gray-800">{profile.title}</div>
+                  <Content html={profile.body} />
+                  <a
+                    target="_blank"
+                    className="underline text-sky-400"
+                    href={profile.insta}
+                    rel="noreferrer"
+                  >
+                    Instaglam
+                  </a>
+                  <a
+                    target="_blank"
+                    className="underline text-sky-400"
+                    href={profile.youtube}
+                    rel="noreferrer"
+                  >
+                    YouTube
+                  </a>
+                </div>
+              </div>
+            </Card>
           </NarrowView>
         </VerticalLaneLayout.Body>
         <VerticalLaneLayout.RightSide>
           <div className="w-full md:hidden lg:hidden">
             <ShareButtonList title={post.title} />
           </div>
+          <Card className="p-5 mt-16 lg:hidden md:hidden">
+            <div className="flex flex-col items-center gap-4 lg:flex-row">
+              <div className="flex p-2 pt-6 rounded-full w-36 h-36 bg-tia-maria-100">
+                <Image
+                  className="object-cover rounded-full w-36 h-36"
+                  src={profile.icon.url}
+                  width={200}
+                  height={200}
+                  alt="たまごのプロフィール画像"
+                />
+              </div>
+              <div className="flex flex-col gap-2">
+                <div className="text-lg font-bold text-gray-800">{profile.title}</div>
+                <Content html={profile.body} />
+                <a
+                  target="_blank"
+                  className="underline text-sky-400"
+                  href={profile.insta}
+                  rel="noreferrer"
+                >
+                  Instaglam
+                </a>
+                <a
+                  target="_blank"
+                  className="underline text-sky-400"
+                  href={profile.youtube}
+                  rel="noreferrer"
+                >
+                  YouTube
+                </a>
+              </div>
+            </div>
+          </Card>
         </VerticalLaneLayout.RightSide>
       </VerticalLaneLayout>
     </>
@@ -104,6 +174,8 @@ export const getServerSideProps: GetServerSideProps = async (
   const id = context.params ? (context.params.id as string) : ''
   const draftKey = context.query.draftKey as string
   const data = await fetchPostDetail(id, { draftKey })
+
+  const profile = await fetchProfile()
 
   if (data.body) {
     const $ = load(data.body)
@@ -133,12 +205,16 @@ export const getServerSideProps: GetServerSideProps = async (
 
     // <h1>>内に「*」が3つ以上あれば、区切り線に変換
     $('h1').each((_, elm) => {
-      if (elm && elm.children[0]) {
+      if (elm && !!elm.children.length && elm.children[0]) {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
-        const targetTxt = elm.children[0].data as string
-        if (targetTxt.match(/\*\*\*/)) {
-          $(elm).replaceWith(`<hr class="divider" />`)
+        if (elm.children[0].data) {
+          // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+          // @ts-ignore
+          const targetTxt = elm.children[0].data as string
+          if (targetTxt.match(/\*\*\*/)) {
+            $(elm).replaceWith(`<hr class="divider" />`)
+          }
         }
       }
     })
@@ -147,6 +223,7 @@ export const getServerSideProps: GetServerSideProps = async (
       props: {
         post: data,
         highlightedBody: $.html(),
+        profile,
       },
     }
   } else {
@@ -154,6 +231,7 @@ export const getServerSideProps: GetServerSideProps = async (
       props: {
         post: data,
         highlightedBody: '',
+        profile,
       },
     }
   }
