@@ -1,5 +1,7 @@
 やっほーっほーー
 # Jamstack Blog
+これは消したくない！！
+どうしても消したくない！！
 
 ## Start development
 ```bash
