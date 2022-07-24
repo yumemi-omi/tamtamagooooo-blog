@@ -1,6 +1,6 @@
-import { FC } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { FC } from 'react'
 
 export const MainHeader: FC = () => {
   const router = useRouter()

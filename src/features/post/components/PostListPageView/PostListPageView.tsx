@@ -1,15 +1,16 @@
-import { Post } from '@/shared/types/microCMS/api/post'
 import { FC } from 'react'
-import { VerticalLaneLayout } from '@/shared/components/VerticalLaneLayout'
-import { PostSearch } from '@/features/search/components/PostSearch'
-import { Posts } from '@/features/post/components/Posts'
-import { Category } from '@/shared/types/microCMS/api/category'
+
 import { CategoryTile } from '@/features/category/components/CategoryTile'
-import { Tag } from '@/features/tag/types/tag'
-import { TagTile } from '@/features/tag/components/TagTile'
-import { Pagination, PageMeta } from '@/shared/components/Pagination'
-import { Profile } from '@/features/profile/types/profile'
+import { Posts } from '@/features/post/components/Posts'
 import { ProfileTile } from '@/features/profile/components/ProfileTile'
+import { Profile } from '@/features/profile/types/profile'
+import { PostSearch } from '@/features/search/components/PostSearch'
+import { TagTile } from '@/features/tag/components/TagTile'
+import { Tag } from '@/features/tag/types/tag'
+import { Pagination, PageMeta } from '@/shared/components/Pagination'
+import { VerticalLaneLayout } from '@/shared/components/VerticalLaneLayout'
+import { Category } from '@/shared/types/microCMS/api/category'
+import { Post } from '@/shared/types/microCMS/api/post'
 
 type Props = {
   posts: Post[]

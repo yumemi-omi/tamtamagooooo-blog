@@ -1,10 +1,11 @@
 import { GetStaticProps } from 'next'
 import { FC } from 'react'
-import { Seo } from '@/shared/components/Seo'
-import { NarrowView } from '@/shared/components/NarrowView'
+
+import { Content } from '@/features/post/components/Content'
 import { getPostByFilename } from '@/libs/markdownApi'
 import markdownToHtml from '@/libs/markdownToHtml'
-import { Content } from '@/features/post/components/Content'
+import { NarrowView } from '@/shared/components/NarrowView'
+import { Seo } from '@/shared/components/Seo'
 
 type Props = {
   policy: { [key: string]: string }

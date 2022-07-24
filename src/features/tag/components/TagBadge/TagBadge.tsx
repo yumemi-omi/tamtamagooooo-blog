@@ -1,4 +1,5 @@
 import { FC } from 'react'
+
 import { Tag } from '@/features/tag/types/tag'
 
 const TAG_BADGE_COLOR_SET = {

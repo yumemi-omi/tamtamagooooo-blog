@@ -1,6 +1,4 @@
-// type Props = {}
-
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 import { useState, FC } from 'react'
 
 export const PostSearch: FC = () => {

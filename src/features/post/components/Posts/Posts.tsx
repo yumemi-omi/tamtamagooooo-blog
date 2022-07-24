@@ -1,7 +1,8 @@
 import Link from 'next/link'
-import { Post } from '@/shared/types/microCMS/api/post'
-import { PostCard } from '@/features/post/components/PostCard'
 import { FC } from 'react'
+
+import { PostCard } from '@/features/post/components/PostCard'
+import { Post } from '@/shared/types/microCMS/api/post'
 
 type Props = {
   posts: Post[]
