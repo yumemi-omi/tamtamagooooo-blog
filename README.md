@@ -1,23 +1,28 @@
 # Jamstack Blog
 
 ## Start development
+
 ```bash
 npm i
 npm run dev
 ```
 
 ## Building
+
 ### API
+
 ```bash
 npm run build:api
 ```
 
 ### App
+
 ```bash
 npm run build
 ```
 
 ## Directory
+
 ```
 src
 ├── aspida aspidaで使用するAPIリクエストを表現する型を含むフォルダ
@@ -44,6 +49,7 @@ src
 ```
 
 ## Stack
+
 - NextJS
 - TypeScript
 - TailwindCSS

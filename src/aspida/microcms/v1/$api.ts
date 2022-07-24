@@ -1,9 +1,10 @@
-import type { AspidaClient } from 'aspida'
 import { dataToURLString } from 'aspida'
+
 import type { Methods as Methods0 } from './category'
 import type { Methods as Methods1 } from './post'
 import type { Methods as Methods2 } from './post/_postId@string'
 import type { Methods as Methods3 } from './tag'
+import type { AspidaClient } from 'aspida'
 
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   const prefix = (baseURL === undefined ? 'https://undefined.microcms.io/api/v1' : baseURL).replace(

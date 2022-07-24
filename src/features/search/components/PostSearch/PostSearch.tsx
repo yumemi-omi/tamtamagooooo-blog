@@ -1,21 +1,29 @@
 import { useRouter } from 'next/router'
-import { useState, FC } from 'react'
+import React, { useState, FC, useCallback } from 'react'
+
+import { useDebounce } from '@/shared/hooks/useDebounce'
 
 export const PostSearch: FC = () => {
   const router = useRouter()
   const [keyword, setKeyword] = useState<string>((router.query.q as string) || '')
+  const debounce = useDebounce(1000)
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    if (!keyword.trim()) {
-      return
-    }
-    router.push(`/search?q=${keyword}`)
-  }
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      debounce(() => {
+        if (!keyword.trim()) {
+          return
+        }
+        router.push(`/search?q=${keyword}`)
+      })
+    },
+    [keyword, router, debounce],
+  )
 
-  const handleTextInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleTextInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value)
-  }
+  }, [])
 
   return (
     <form onSubmit={handleSubmit}>

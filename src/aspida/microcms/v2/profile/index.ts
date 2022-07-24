@@ -1,6 +1,6 @@
 import { Profile } from '@/features/profile/types/profile'
-import { MicroCMSGetSingularQuery } from '@/shared/types/microCMS/query'
 import { MicroCMSReqHeaders } from '@/shared/types/microCMS/headers'
+import { MicroCMSGetSingularQuery } from '@/shared/types/microCMS/query'
 
 export type Methods = {
   get: {

@@ -1,7 +1,8 @@
-import type { AspidaClient } from 'aspida'
 import { dataToURLString } from 'aspida'
+
 import type { Methods as Methods0 } from './like'
 import type { Methods as Methods1 } from './like-by-user'
+import type { AspidaClient } from 'aspida'
 
 const api = <T>({ baseURL, fetch }: AspidaClient<T>) => {
   const prefix = (baseURL === undefined ? 'undefined/api' : baseURL).replace(/\/$/, '')
