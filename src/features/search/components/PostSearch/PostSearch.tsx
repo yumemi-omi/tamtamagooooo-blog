@@ -8,15 +8,18 @@ export const PostSearch: FC = () => {
   const [keyword, setKeyword] = useState<string>((router.query.q as string) || '')
   const debounce = useDebounce(1000)
 
-  const handleSubmit = useCallback((e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
-    debounce(() => {
-      if (!keyword.trim()) {
-        return
-      }
-      router.push(`/search?q=${keyword}`)
-    })
-  }, [keyword, router, debounce])
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault()
+      debounce(() => {
+        if (!keyword.trim()) {
+          return
+        }
+        router.push(`/search?q=${keyword}`)
+      })
+    },
+    [keyword, router, debounce],
+  )
 
   const handleTextInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(e.target.value)
