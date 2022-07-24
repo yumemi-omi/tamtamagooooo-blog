@@ -1,17 +1,18 @@
 import { GetStaticProps, GetStaticPropsContext } from 'next'
-import { fetchPost } from '@/features/post/api/fetchPost'
-import { Post } from '@/shared/types/microCMS/api/post'
 import { FC } from 'react'
-import { Seo } from '@/shared/components/Seo'
+
 import { fetchCategory } from '@/features/category/api/fetchCategory'
-import { Category } from '@/shared/types/microCMS/api/category'
+import { fetchPost } from '@/features/post/api/fetchPost'
+import { PostListPageView } from '@/features/post/components/PostListPageView'
+import { fetchProfile } from '@/features/profile/api/fetchProfile'
+import { Profile } from '@/features/profile/types/profile'
 import { fetchTag } from '@/features/tag/api/fetchTag'
 import { Tag } from '@/features/tag/types/tag'
-import array from '@/shared/utils/array'
 import { PageMeta } from '@/shared/components/Pagination'
-import { Profile } from '@/features/profile/types/profile'
-import { fetchProfile } from '@/features/profile/api/fetchProfile'
-import { PostListPageView } from '@/features/post/components/PostListPageView'
+import { Seo } from '@/shared/components/Seo'
+import { Category } from '@/shared/types/microCMS/api/category'
+import { Post } from '@/shared/types/microCMS/api/post'
+import array from '@/shared/utils/array'
 
 type Props = {
   posts: Post[]

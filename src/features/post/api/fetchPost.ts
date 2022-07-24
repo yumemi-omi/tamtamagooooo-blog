@@ -1,5 +1,5 @@
-import { microcmsApiClient } from '@/libs/apiClient'
 import { headers } from '@/config'
+import { microcmsApiClient } from '@/libs/apiClient'
 import { MicroCMSGetQuery } from '@/shared/types/microCMS/query'
 
 export const fetchPost = (query?: MicroCMSGetQuery) => {

@@ -1,5 +1,5 @@
-import { microcmsApiClientVer2 } from '@/libs/apiClient'
 import { headersVer2 } from '@/config'
+import { microcmsApiClientVer2 } from '@/libs/apiClient'
 import { MicroCMSGetSingularQuery } from '@/shared/types/microCMS/query'
 
 export const fetchProfile = (query?: MicroCMSGetSingularQuery) => {

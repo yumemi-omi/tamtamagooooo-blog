@@ -1,5 +1,6 @@
-import type { NextApiRequest, NextApiResponse } from 'next'
 import { fetchPost } from '@/features/post/api/fetchPost'
+
+import type { NextApiRequest, NextApiResponse } from 'next'
 
 const search = async (req: NextApiRequest, res: NextApiResponse) => {
   if (typeof req.query.q !== 'string') {

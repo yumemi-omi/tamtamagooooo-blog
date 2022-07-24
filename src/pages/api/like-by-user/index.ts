@@ -1,11 +1,12 @@
-import { fetchLike } from '@/features/supabase/like/fetchLike'
-import { upsertLike } from '@/features/supabase/like/upsertLike'
-import { encryptSha256 } from '@/features/user/utils'
 import { NextApiRequest, NextApiResponse } from 'next'
-import { getIp } from '@/features/user/utils'
+
+import { fetchLike } from '@/features/supabase/like/fetchLike'
 import { Like } from '@/features/supabase/like/types'
-import { insertUser } from '@/features/supabase/user/insertUser'
+import { upsertLike } from '@/features/supabase/like/upsertLike'
 import { upsertPost } from '@/features/supabase/post/upsertPost'
+import { insertUser } from '@/features/supabase/user/insertUser'
+import { encryptSha256 } from '@/features/user/utils'
+import { getIp } from '@/features/user/utils'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   const {

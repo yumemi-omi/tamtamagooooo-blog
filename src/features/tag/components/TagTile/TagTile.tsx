@@ -1,9 +1,10 @@
-import { Card } from '@/shared/components/Card'
-import { Tag } from '@/features/tag/types/tag'
-import { FC } from 'react'
-import { TagBadge } from '@/features/tag/components/TagBadge'
-import { AnchorWrapper } from '@/shared/components/AnchorWrapper'
 import Link from 'next/link'
+import { FC } from 'react'
+
+import { TagBadge } from '@/features/tag/components/TagBadge'
+import { Tag } from '@/features/tag/types/tag'
+import { AnchorWrapper } from '@/shared/components/AnchorWrapper'
+import { Card } from '@/shared/components/Card'
 
 type Props = {
   tags: Tag[]

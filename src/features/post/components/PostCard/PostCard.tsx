@@ -1,11 +1,12 @@
-import { forwardRef } from 'react'
-import { Post } from '@/shared/types/microCMS/api/post'
-import Image from 'next/image'
 import { format } from 'date-fns'
-import { TagBadge } from '@/features/tag/components/TagBadge'
-import { Card } from '@/shared/components/Card'
+import Image from 'next/image'
+import { forwardRef } from 'react'
+
 import { CategoryBadge } from '@/features/category/components/CategoryBadge'
 import { getdDefaultThumbnailByCategory } from '@/features/category/utils'
+import { TagBadge } from '@/features/tag/components/TagBadge'
+import { Card } from '@/shared/components/Card'
+import { Post } from '@/shared/types/microCMS/api/post'
 
 type PostCardProps = {
   post: Post
