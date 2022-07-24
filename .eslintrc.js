@@ -2,10 +2,8 @@ module.exports = {
   plugins: ['@typescript-eslint', 'prettier', 'import'],
   extends: [
     'eslint:recommended',
-    'next',
     'next/core-web-vitals',
     'plugin:@typescript-eslint/recommended',
-    'plugin:prettier/recommended',
     'prettier',
   ],
   env: {
